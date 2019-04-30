@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package m06.uf1.audioplayer;
+package m06.uf1.p1.grup5;
 
 /**
  *

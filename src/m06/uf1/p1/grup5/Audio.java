@@ -1,4 +1,4 @@
-package m06.uf1.audioplayer;
+package m06.uf1.p1.grup5;
 
 import java.io.File;
 import javazoom.jlgui.basicplayer.BasicPlayer;
