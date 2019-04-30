@@ -14,7 +14,7 @@ public class Controlador implements ActionListener {
 
     public Controlador() {
         vista = new Vista();
-        audio = new Audio("audios/acdc - hells bells.mp3");
+        audio = new Audio("audios/stepahead.mp3");
         afegirListenerBotons();
     }
 
