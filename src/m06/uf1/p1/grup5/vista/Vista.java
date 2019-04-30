@@ -16,7 +16,9 @@ public class Vista {
     private JFrame finestra;
     private JPanel panell;
     private JPanel panellDerecha;
+    private JPanel auxDerecha;
     private JPanel parteDerecha;
+    private JPanel panellIzquierda;
     private JPanel parteIzquierda;
     private JPanel parteAbajo;
     private JPanel parteMedio;
@@ -33,49 +35,61 @@ public class Vista {
     private JComboBox elegir;
 
     private JLabel nombreCancion;
+    private JLabel nCancion;
     private JLabel nombrePlayList;
+    private JLabel nPlayList;
 
     private JSlider barra;
 
     public Vista() {
 
         finestra = new JFrame("Reproductor Àudio");
-        finestra.setSize(400, 400);
+        finestra.setSize(500, 400);
         finestra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         finestra.setResizable(true);
         finestra.setLocationRelativeTo(null);
 
-        vacio=new JPanel();
+        vacio = new JPanel();
         vacio.setLayout(new GridLayout());
         total = new JPanel();
         total.setLayout(new BorderLayout());
-        
-        parteMedio=new JPanel();
+
+        parteMedio = new JPanel();
         parteMedio.setLayout(new GridLayout(1, 2));
-        
+
         panell = new JPanel();
         panell.setLayout(new GridLayout(1, 5));
         parteAbajo = new JPanel();
         parteAbajo.setLayout(new GridLayout(0, 1));
-        
+
         panellDerecha = new JPanel();
         panellDerecha.setLayout(new BorderLayout());
+        auxDerecha = new JPanel();
+        auxDerecha.setLayout(new GridLayout(2, 0));
         parteDerecha = new JPanel();
         parteDerecha.setLayout(new GridLayout(0, 1));
-        
-        parteIzquierda = new JPanel();
-        parteIzquierda.setLayout(new GridLayout(0, 1));
-        //parteIzquierda.
 
+        panellIzquierda = new JPanel();
+        panellIzquierda.setLayout(new GridLayout(2, 0));
+        parteIzquierda = new JPanel();
+        parteIzquierda.setLayout(new BorderLayout());
+
+        nPlayList = new JLabel("Nom de la playList:");
         nombrePlayList = new JLabel("pepe");
         lista = new JTable();
-        parteIzquierda.add(nombrePlayList);
-        parteIzquierda.add(lista);
+        panellIzquierda.add(nPlayList);
+        panellIzquierda.add(nombrePlayList);
+        parteIzquierda.add(panellIzquierda, BorderLayout.NORTH);
+        parteIzquierda.add(lista, BorderLayout.CENTER);
 
-        nombreCancion = new JLabel("hola");
         elegir = new JComboBox();
+        nCancion = new JLabel("Nom de la canco:");
+        nombreCancion = new JLabel("hola");
+
+        auxDerecha.add(nCancion);
+        auxDerecha.add(nombreCancion);
         panellDerecha.add(elegir, BorderLayout.NORTH);
-        panellDerecha.add(nombreCancion, BorderLayout.SOUTH);
+        panellDerecha.add(auxDerecha, BorderLayout.SOUTH);
         parteDerecha.add(panellDerecha);
 
         barra = new JSlider();
@@ -91,11 +105,11 @@ public class Vista {
 
         parteAbajo.add(barra);
         parteAbajo.add(panell);
-        
-        parteMedio.add(parteIzquierda);       
+
+        parteMedio.add(parteIzquierda);
         parteMedio.add(parteDerecha);
-        
-        total.add(parteMedio, BorderLayout.CENTER);        
+
+        total.add(parteMedio, BorderLayout.CENTER);
         total.add(parteAbajo, BorderLayout.SOUTH);
         finestra.add(total);
         finestra.setVisible(true);
