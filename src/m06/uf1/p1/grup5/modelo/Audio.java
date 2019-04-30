@@ -1,4 +1,4 @@
-package m06.uf1.p1.grup5;
+package m06.uf1.p1.grup5.modelo;
 
 import java.io.File;
 import javazoom.jlgui.basicplayer.BasicPlayer;

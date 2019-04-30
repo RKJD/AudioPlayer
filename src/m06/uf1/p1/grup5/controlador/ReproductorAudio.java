@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package m06.uf1.p1.grup5;
+package m06.uf1.p1.grup5.controlador;
 
 /**
  *
  * @author Juan
  */
+import m06.uf1.p1.grup5.controlador.Controlador;
 import java.io.FileNotFoundException;
 
 public class ReproductorAudio {
