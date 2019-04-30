@@ -1,16 +1,19 @@
 package m06.uf1.p1.grup5.controlador;
 
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
+import javax.xml.parsers.*;
+import org.w3c.dom.*;
 
 public class leerXML {
 
     public static void main(String[] args) {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        Document documento = null;
         try {
-            File canciones = new File("audios/canciones.xml");
-            FileReader leer = new FileReader(canciones);
-            System.out.println(leer);
-            // file reader no lee xml, necesitamos un lector de xml en si
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            documento = builder.parse( new File("audios/canciones.xml"));
+            documento.getNodeName();
+            System.out.println(documento.getDoctype());
         } catch (Exception e) {
             e.printStackTrace();
         }
