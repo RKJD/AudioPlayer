@@ -7,7 +7,7 @@ package m06.uf1.p1.grup5.controlador;
 
 /**
  *
- * @author Juan
+ * @author Roger Miralles, Marc Cardenas y Raul Barrero
  */
 import m06.uf1.p1.grup5.controlador.Controlador;
 import java.io.FileNotFoundException;
