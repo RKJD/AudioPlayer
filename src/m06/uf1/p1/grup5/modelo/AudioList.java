@@ -1,18 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package m06.uf1.p1.grup5.modelo;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Random;
 
-/**
- *
- * @author Marc
- */
 public class AudioList {
     private String name,desc, imgPath;
     private int[] tracks;
@@ -35,7 +26,7 @@ public class AudioList {
     }
 //</editor-fold>
     
-//<editor-fold desc="Getters">
+//<editor-fold defaultstate="collapsed" desc="Getters">
     /***@return Devuelve el nombre de la lista*/
     public String getName(){return name;}
     /***@return Devuelve la descripción de la lista*/
@@ -58,7 +49,7 @@ public class AudioList {
     }
 //</editor-fold>
     
-//<editor-fold desc="Nav Getters">
+//<editor-fold defaultstate="collapsed" desc="Nav Getters">
     /***@return Devuelve el id de una canción de la lista en la posición especificada*/
     public int getTrack(int i){
         currentSong = i;
@@ -76,7 +67,20 @@ public class AudioList {
         else return getTrack(0);
     }
     /***@return Devuelve el id de una canción aleatória de la lista*/
-    public int getTrack(Random rand){return tracks[(int)(rand.nextFloat()*tracks.length)];}
+    public int getTrack(Random rand){return getTrack((int)(rand.nextFloat()*tracks.length));}
+    /***@return Devuelve el id de la canción actual de la lista*/
+    public int getTrack(){return tracks[currentSong];}
+//</editor-fold>
+
+//<editor-fold defaultstate="collapsed" desc="Setters">
+    /*** Selecciona una canción de la lista
+     * @param i Número de canción seleccionada en el orden de la lista*/
+    public void setCurrentSong(int i){
+        if(tracks.length < i)
+            currentSong = i;
+        else
+            throw new ArrayIndexOutOfBoundsException("Este número de canción no exite");
+    }
 //</editor-fold>
     
 }
