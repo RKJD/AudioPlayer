@@ -1,13 +1,14 @@
 package m06.uf1.p1.grup5.vista;
 
 import java.awt.BorderLayout;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTable;
-import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
@@ -16,9 +17,9 @@ public class Vista {
     private JFrame finestra;
     private JPanel panell;
     private JPanel panellDerecha;
-    private JPanel auxDerecha;
+    private JPanel aux;
     private JPanel parteDerecha;
-    private JPanel panellIzquierda;
+    private JPanel auxDerecha;
     private JPanel parteIzquierda;
     private JPanel parteAbajo;
     private JPanel parteMedio;
@@ -36,6 +37,12 @@ public class Vista {
 
     private JLabel nombreCancion;
     private JLabel nCancion;
+    private JLabel descripcion;
+    private JLabel nDescripcion;
+    private JLabel autor;
+    private JLabel nAutor;
+    private ImageIcon imagen;
+    
     private JLabel nombrePlayList;
     private JLabel nPlayList;
 
@@ -46,7 +53,7 @@ public class Vista {
         finestra = new JFrame("Reproductor Àudio");
         finestra.setSize(500, 400);
         finestra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        finestra.setResizable(true);
+        finestra.setResizable(false);
         finestra.setLocationRelativeTo(null);
 
         vacio = new JPanel();
@@ -59,39 +66,49 @@ public class Vista {
 
         panell = new JPanel();
         panell.setLayout(new GridLayout(1, 5));
+        
+        aux = new JPanel();
+        aux.setLayout(new GridLayout(0, 4));
         parteAbajo = new JPanel();
         parteAbajo.setLayout(new GridLayout(0, 1));
 
         panellDerecha = new JPanel();
         panellDerecha.setLayout(new BorderLayout());
         auxDerecha = new JPanel();
-        auxDerecha.setLayout(new GridLayout(2, 0));
+        auxDerecha.setLayout(new GridLayout(10, 0));
         parteDerecha = new JPanel();
         parteDerecha.setLayout(new GridLayout(0, 1));
 
-        panellIzquierda = new JPanel();
-        panellIzquierda.setLayout(new GridLayout(2, 0));
         parteIzquierda = new JPanel();
-        parteIzquierda.setLayout(new BorderLayout());
-
+        parteIzquierda.setLayout(new GridLayout(0,1));        
+        
+        lista = new JTable();               
+        parteIzquierda.add(lista);
+        
         nPlayList = new JLabel("Nom de la playList:");
         nombrePlayList = new JLabel("pepe");
-        lista = new JTable();
-        panellIzquierda.add(nPlayList);
-        panellIzquierda.add(nombrePlayList);
-        parteIzquierda.add(panellIzquierda, BorderLayout.NORTH);
-        parteIzquierda.add(lista, BorderLayout.CENTER);
-
+        nDescripcion= new JLabel("Descripcion:");
+        descripcion = new JLabel("desc");
+        //imagen=new ImageIcon(url);
         elegir = new JComboBox();
-        nCancion = new JLabel("Nom de la canco:");
-        nombreCancion = new JLabel("hola");
-
-        auxDerecha.add(nCancion);
-        auxDerecha.add(nombreCancion);
+        auxDerecha.add(nPlayList);
+        auxDerecha.add(nombrePlayList);
+        auxDerecha.add(nDescripcion);
+        auxDerecha.add(descripcion); 
+        //auxDerecha.add(imagen);                      
         panellDerecha.add(elegir, BorderLayout.NORTH);
         panellDerecha.add(auxDerecha, BorderLayout.SOUTH);
         parteDerecha.add(panellDerecha);
 
+        nCancion = new JLabel("Nom de la canco:");
+        nombreCancion = new JLabel("hola");
+        nAutor = new JLabel("Nom del autor:");
+        autor = new JLabel("hola");          
+        aux.add(nCancion);
+        aux.add(nombreCancion);
+        aux.add(nAutor);
+        aux.add(autor);
+                
         barra = new JSlider();
         barra.setOrientation(0);
         play = new JButton("Play");
@@ -103,6 +120,7 @@ public class Vista {
         panell.add(continuar);
         panell.add(stop);
 
+        parteAbajo.add(aux);
         parteAbajo.add(barra);
         parteAbajo.add(panell);
 
