@@ -8,7 +8,7 @@ import javax.xml.parsers.*;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
-public class XML {
+public class ListaCancionesDOM {
 
     private String archivo = "audios/canciones.xml";
     public Map<Integer, Cancion> MapCanciones;
@@ -43,12 +43,21 @@ public class XML {
                             durada.getChildNodes().item(0).getNodeValue(),
                             ruta.getChildNodes().item(0).getNodeValue()
                     );
+                    System.out.println(id+ " y " +canc);
                     MapCanciones.put(id, canc);
                 }
             }
         } catch (SAXException ex) {
             ex.printStackTrace();
         }
+    }
+    
+    public String listarCanciones() {
+        String cadena = "LLISTAT DE Cancons: \nHi ha un total de " + MapCanciones.size() + " Cancons.\n";
+        for (Map.Entry<Integer, Cancion> canci: MapCanciones.entrySet()){
+            cadena += canci.getValue().toString() + "\n";
+        }
+        return cadena;
     }
 
 }
