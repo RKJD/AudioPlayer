@@ -82,5 +82,12 @@ public class AudioList {
             throw new ArrayIndexOutOfBoundsException("Este número de canción no exite");
     }
 //</editor-fold>
-    
+   
+    @Override
+    public String toString() {
+        String lista = "";
+        for(int t : tracks)
+            lista+=","+tracks;
+        return name +": "+desc+"\n Ubicado en "+imgPath+"\n ["+lista.substring(1)+"]";
+    }
 }

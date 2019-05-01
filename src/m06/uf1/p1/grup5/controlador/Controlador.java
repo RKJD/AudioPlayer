@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.parsers.ParserConfigurationException;
@@ -11,6 +12,7 @@ import javazoom.jlgui.basicplayer.BasicPlayerException;
 import m06.uf1.p1.grup5.modelo.Audio;
 import m06.uf1.p1.grup5.modelo.AudioList;
 import m06.uf1.p1.grup5.modelo.Cancion;
+import m06.uf1.p1.grup5.modelo.Playlist;
 import m06.uf1.p1.grup5.vista.Vista;
 
 public class Controlador implements ActionListener {
@@ -26,6 +28,7 @@ public class Controlador implements ActionListener {
             memoria.cargarListas();
             vista = new Vista();
             audio = new Audio("audios/akatsuki.mp3");
+            System.out.println(getPlaylistData(1));
             afegirListenerBotons();
         } catch (IOException ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
@@ -64,5 +67,11 @@ public class Controlador implements ActionListener {
     }
     public Cancion getCancion(int id){
         return memoria.MapCanciones.get(id);
+    }
+    public Map<Integer, Playlist> getPlaylistMap(int id){
+        return memoria.MapPlaylist;
+    }
+    public AudioList getPlaylistData(int id){
+        return LeerJson.getList(memoria.MapPlaylist.get(id).getRuta());
     }
 }
