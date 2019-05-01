@@ -2,6 +2,8 @@ package m06.uf1.p1.grup5.vista;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -82,13 +84,15 @@ public class Vista {
         parteIzquierda.setLayout(new GridLayout(0, 1));
 
         lista = new JTable(15, 2);
+        lista.setEnabled(true);
+       
 
         //------------------
         for (int i = 0; i != 15; i++) {
             lista.setValueAt(i + 1, i, 0);
         }
         for (int x = 0; x != 15; x++) {
-            lista.setValueAt("nombre cancion", x, 1);
+            lista.setValueAt("nombreCancion ", x, 1);
         }
 
         System.out.println(lista.getRowCount() + " " + lista.getColumnCount());
