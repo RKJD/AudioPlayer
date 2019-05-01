@@ -22,7 +22,7 @@ public class Controlador implements ActionListener {
     private XML memoria;
     private boolean isPlaying;
     private AudioList activeList, noList;
-    
+
     public Controlador() {
         isPlaying = false;
         try {
@@ -31,14 +31,15 @@ public class Controlador implements ActionListener {
             memoria.cargarListas();
             vista = new Vista();
             activeList = getPlaylistData(0);
-            
+
             afegirListenerBotons();
-            
+
             String[] nomCanciones = new String[activeList.getTracks().length];
             for (int i = 0; i < activeList.getTracks().length; i++) {
-                nomCanciones[i] =  getCancion(activeList.getTrack(i)).getNom();
+                nomCanciones[i] = getCancion(activeList.getTrack(i)).getNom();
             }
-            
+
+            vista.updateBox(getPlaylistMap());
             vista.updateSongsStart(nomCanciones);
             audio = new Audio(getCancion(activeList.getNextTrack()).getRuta());
         } catch (IOException ex) {
@@ -79,15 +80,21 @@ public class Controlador implements ActionListener {
             e.printStackTrace();
         }
     }
-    public Cancion getCancion(int id){
+
+    public Cancion getCancion(int id) {
         return memoria.MapCanciones.get(id);
     }
-    public Map<Integer, Playlist> getPlaylistMap(int id){
+
+    public Map<Integer, Playlist> getPlaylistMap() {
         return memoria.MapPlaylist;
     }
-    public AudioList getPlaylistData(int id){
-        if(id == 0) return noList;
-        else return LeerJson.getList(memoria.MapPlaylist.get(id).getRuta());
-        
+
+    public AudioList getPlaylistData(int id) {
+        if (id == 0) {
+            return noList;
+        } else {
+            return LeerJson.getList(memoria.MapPlaylist.get(id).getRuta());
+        }
+
     }
 }

@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Map;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
 import m06.uf1.p1.grup5.controlador.Controlador;
 import m06.uf1.p1.grup5.modelo.Cancion;
+import m06.uf1.p1.grup5.modelo.Playlist;
 
 public class Vista {
 
@@ -107,9 +109,9 @@ public class Vista {
         parteIzquierda.add(lista);
 
         nPlayList = new JLabel("Nom de la playList:");
-        nombrePlayList = new JLabel("pepe");
+        nombrePlayList = new JLabel("Sin Playlist");
         nDescripcion = new JLabel("Descripcion:");
-        descripcion = new JLabel("desc");
+        descripcion = new JLabel("No tienes ninguna playlist seleccionada.");
         imagen = new JLabel(new ImageIcon("images/abrupto.jpg"));
 
         elegir = new JComboBox();
@@ -257,6 +259,15 @@ public class Vista {
         for (int x = 0; x < info.length; x++) {
             lista.setValueAt(info[x], x, 1);
         }
+    }
+    
+    public void updateBox(Map<Integer, Playlist> playlist){
+        String[] nomPlaylist = new String[playlist.size()];
+        for (int i = 0; i < playlist.size(); i++) {
+            System.out.println(playlist.get(i).getNom());
+            nomPlaylist[i] =  playlist.get(i).getNom();
+        }            
+        elegir = new JComboBox(nomPlaylist);
     }
 //</editor-fold>
     
