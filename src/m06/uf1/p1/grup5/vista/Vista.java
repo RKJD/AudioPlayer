@@ -12,6 +12,8 @@ import javax.swing.JTable;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JTabbedPane;
+import m06.uf1.p1.grup5.controlador.Controlador;
 
 public class Vista {
 
@@ -85,14 +87,14 @@ public class Vista {
 
         lista = new JTable(15, 2);
         lista.setEnabled(true);
-       
+        //Controlador cont=new Controlador();
 
         //------------------
         for (int i = 0; i != 15; i++) {
             lista.setValueAt(i + 1, i, 0);
         }
         for (int x = 0; x != 15; x++) {
-            lista.setValueAt("nombreCancion ", x, 1);
+            //lista.setValueAt(cont.getCancion(x).getNom(), x, 1);
         }
 
         System.out.println(lista.getRowCount() + " " + lista.getColumnCount());
@@ -149,6 +151,47 @@ public class Vista {
         finestra.setVisible(true);
     }
 
+    public JTable getTable(){
+        return lista;
+    }
+    public void setTable(JTable table){
+        this.lista=table;
+    }
+    
+    public JComboBox getComboBox(){
+        return elegir;
+    }
+    
+    public void setComboBox(JComboBox comboBox){
+        this.elegir=comboBox;
+    }
+    
+    public JSlider getSlider(){
+        return barra;
+    }
+    
+    public void setSlider(JSlider slider){
+        this.barra=slider;
+    }
+    
+    public JLabel getNombreCancion(){
+     return nombreCancion;
+    }
+    
+    public void setNombreCancion(JLabel nombre){
+        this.nombreCancion=nombre;
+    }
+    
+    public JLabel getNombrePlayList(){
+     return nombrePlayList;
+    }
+    
+    public void setNombrePlayList(JLabel nombre){
+        this.nombrePlayList=nombre;
+    }
+    
+    
+    
     public JFrame getFinestra() {
         return finestra;
     }
