@@ -18,17 +18,18 @@ public class XML {
     public Map<Integer, Cancion> MapCanciones = new HashMap();
     public Map<Integer, Playlist> MapPlaylist = new HashMap();
     
-    public void cargarCanciones() throws FileNotFoundException, IOException, ParserConfigurationException {
+    public int[] cargarCanciones() throws FileNotFoundException, IOException, ParserConfigurationException {
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         Document document;
         DocumentBuilder builder = factory.newDocumentBuilder();
+        int[] retorno = null;
         try {
 
             document = builder.parse(new File(archivo));
             Element arrel = document.getDocumentElement();
             NodeList listaCanciones = arrel.getElementsByTagName("cancion");
-            
+            retorno = new int [listaCanciones.getLength()];
             for (int i = 0; i < listaCanciones.getLength(); i++) {
                 Node node = listaCanciones.item(i);
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
@@ -47,12 +48,14 @@ public class XML {
                             durada.getChildNodes().item(0).getNodeValue(),
                             ruta.getChildNodes().item(0).getNodeValue()
                     );
+                    retorno[i] = id;
                     MapCanciones.put(id, canc);
                 }
             }
         } catch (SAXException ex) {
             ex.printStackTrace();
         }
+        return retorno;
     }
 
     public void cargarListas() throws FileNotFoundException, IOException, ParserConfigurationException {

@@ -267,7 +267,7 @@ public class Vista {
     }
 //</editor-fold>
     
-//<editor-fold defaultstate="collapsed" desc="Updates">
+//<editor-fold desc="Updates">
     public void updateSongInfo(Cancion info){
         this.nombreCancion.setText(info.getNom());
         this.autor.setText(info.getAutor());

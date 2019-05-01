@@ -21,13 +21,13 @@ public class Controlador implements ActionListener {
     private Audio audio;
     private XML memoria;
     private boolean isPlaying;
-    private AudioList activeList;
+    private AudioList activeList, noList;
     
     public Controlador() {
         isPlaying = false;
         try {
             memoria = new XML();
-            memoria.cargarCanciones();
+            noList = new AudioList("No list", "No list selected", memoria.cargarCanciones());
             memoria.cargarListas();
             vista = new Vista();
             activeList = getPlaylistData(1);
@@ -78,6 +78,8 @@ public class Controlador implements ActionListener {
         return memoria.MapPlaylist;
     }
     public AudioList getPlaylistData(int id){
-        return LeerJson.getList(memoria.MapPlaylist.get(id).getRuta());
+        if(id == 0) return noList;
+        else return LeerJson.getList(memoria.MapPlaylist.get(id).getRuta());
+        
     }
 }
