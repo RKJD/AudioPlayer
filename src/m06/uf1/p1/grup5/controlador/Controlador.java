@@ -30,16 +30,17 @@ public class Controlador implements ActionListener {
             noList = new AudioList("No list", "No list selected", memoria.cargarCanciones());
             memoria.cargarListas();
             vista = new Vista();
-            activeList = getPlaylistData(1);
-            audio = new Audio(getCancion(activeList.getNextTrack()).getRuta());
+            activeList = getPlaylistData(0);
+            
             afegirListenerBotons();
             
             String[] nomCanciones = new String[activeList.getTracks().length];
             for (int i = 0; i < activeList.getTracks().length; i++) {
                 nomCanciones[i] =  getCancion(activeList.getTrack(i)).getNom();
             }
-            vista.updateSongsStart(nomCanciones);
             
+            vista.updateSongsStart(nomCanciones);
+            audio = new Audio(getCancion(activeList.getNextTrack()).getRuta());
         } catch (IOException ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParserConfigurationException ex) {
