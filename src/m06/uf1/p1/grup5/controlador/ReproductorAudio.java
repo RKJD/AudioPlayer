@@ -19,7 +19,7 @@ import javax.xml.parsers.ParserConfigurationException;
 public class ReproductorAudio {
     public static void main(String[] args) throws FileNotFoundException {
         try {
-            ListaCancionesDOM xml = new ListaCancionesDOM(); 
+            XML xml = new XML(); 
             xml.cargarCanciones();
             Controlador controlador = new Controlador();  
               
