@@ -20,15 +20,18 @@ public class Controlador implements ActionListener {
     private Vista vista;
     private Audio audio;
     private XML memoria;
+    private boolean isPlaying;
+    private AudioList activeList;
     
     public Controlador() {
+        isPlaying = false;
         try {
             memoria = new XML();
             memoria.cargarCanciones();
             memoria.cargarListas();
             vista = new Vista();
-            audio = new Audio("audios/akatsuki.mp3");
-            System.out.println(getPlaylistData(1));
+            activeList = getPlaylistData(1);
+            audio = new Audio(getCancion(activeList.getNextTrack()).getRuta());
             afegirListenerBotons();
         } catch (IOException ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
@@ -51,9 +54,12 @@ public class Controlador implements ActionListener {
         try {
             if (gestorEsdeveniments.equals(vista.getPlay())) { //Si hem pitjat el boto play
                 audio.getPlayer().play(); //reproduim l'àudio
+                vista.updateSongInfo(getCancion(activeList.getTrack()));
+                isPlaying = true;
             } else if (gestorEsdeveniments.equals(vista.getStop())) {
                 //Si hem pitjat el boto stop
                 audio.getPlayer().stop(); //parem la reproducció de l'àudio
+                audio = new Audio(getCancion(activeList.getNextTrack()).getRuta());
             } else if (gestorEsdeveniments.equals(vista.getPausa())) {
                 //Si hem pitjat el boto stop
                 audio.getPlayer().pause(); //pausem la reproducció de l'àudio
