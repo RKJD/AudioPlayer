@@ -114,7 +114,7 @@ public class Vista {
         descripcion = new JLabel("No tienes ninguna playlist seleccionada.");
         imagen = new JLabel(new ImageIcon("images/abrupto.jpg"));
 
-        elegir = new JComboBox();
+        elegir = new JComboBox(new String[]{"Sin lista"});
         auxDerecha.add(nPlayList);
         auxDerecha.add(nombrePlayList);
         auxDerecha.add(nDescripcion);
@@ -263,11 +263,14 @@ public class Vista {
     
     public void updateBox(Map<Integer, Playlist> playlist){
         String[] nomPlaylist = new String[playlist.size()];
-        for (int i = 0; i < playlist.size(); i++) {
-            System.out.println(playlist.get(i).getNom());
-            nomPlaylist[i] =  playlist.get(i).getNom();
-        }            
-        elegir = new JComboBox(nomPlaylist);
+        int i=0;
+        for (Map.Entry<Integer, Playlist> p : playlist.entrySet()) {
+            System.out.println(p.getValue().getNom());
+            nomPlaylist[i] =  p.getValue().getNom();
+            i++;
+            elegir.addItem(p.getValue().getNom());
+        } 
+        //elegir = new JComboBox(nomPlaylist);
     }
 //</editor-fold>
     
