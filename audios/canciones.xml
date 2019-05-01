@@ -120,6 +120,7 @@
 		<durada>00:15</durada>
 		<ruta>audios/worthit.mp3</ruta>
 	</cancion>
+	<!--
 	<playlists>
 		<playlist id="1">
 			<nom>Hiphop</nom>
@@ -133,6 +134,7 @@
 			<nom>Chill</nom>
 			<ruta>listas/playlistChill.json</ruta>
 		</playlist>
-	</playlists>	
+	</playlists>
+	-->
 	
 </canciones>
