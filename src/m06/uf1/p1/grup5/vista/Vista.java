@@ -95,9 +95,11 @@ public class Vista {
         for (int i = 0; i != 15; i++) {
             lista.setValueAt(i + 1, i, 0);
         }
+        /*
         for (int x = 0; x != 15; x++) {
-            //lista.setValueAt(cont.getCancion(x).getNom(), x, 1);
+            lista.setValueAt(cont.getCancion(x).getNom(), x, 1);
         }
+        */
 
         System.out.println(lista.getRowCount() + " " + lista.getColumnCount());
         lista.setShowVerticalLines(true);
@@ -250,5 +252,13 @@ public class Vista {
         this.nombreCancion.setText(info.getNom());
         this.autor.setText(info.getAutor());
     }
+    
+    public void updateSongsStart(String[] info){
+        for (int x = 0; x < info.length; x++) {
+            lista.setValueAt(info[x], x, 1);
+        }
+    }
 //</editor-fold>
+    
+    
 }
