@@ -33,6 +33,13 @@ public class Controlador implements ActionListener {
             activeList = getPlaylistData(1);
             audio = new Audio(getCancion(activeList.getNextTrack()).getRuta());
             afegirListenerBotons();
+            
+            String[] nomCanciones = new String[activeList.getTracks().length];
+            for (int i = 0; i < activeList.getTracks().length; i++) {
+                nomCanciones[i] =  getCancion(activeList.getTrack(i)).getNom();
+            }
+            vista.updateSongsStart(nomCanciones);
+            
         } catch (IOException ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParserConfigurationException ex) {
