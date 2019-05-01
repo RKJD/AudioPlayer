@@ -66,16 +66,20 @@ public class Controlador implements ActionListener {
                 audio.getPlayer().play(); //reproduim l'àudio
                 vista.updateSongInfo(getCancion(activeList.getTrack()));
                 isPlaying = true;
+                vista.updateSlider(2);
             } else if (gestorEsdeveniments.equals(vista.getStop())) {
                 //Si hem pitjat el boto stop
                 audio.getPlayer().stop(); //parem la reproducció de l'àudio
                 audio = new Audio(getCancion(activeList.getNextTrack()).getRuta());
+                vista.updateSlider(4);
             } else if (gestorEsdeveniments.equals(vista.getPausa())) {
                 //Si hem pitjat el boto stop
                 audio.getPlayer().pause(); //pausem la reproducció de l'àudio
+                vista.updateSlider(8);
             } else if (gestorEsdeveniments.equals(vista.getContinuar())) {
                 //Si hem pitjat el boto stop
                 audio.getPlayer().resume(); //continuem la reproducció de l'àudio
+                vista.updateSlider(16);
             } else if (gestorEsdeveniments.equals(vista.getComboBox())) {
                 //Si hem cambiat el comboBox
                 activeList = getPlaylistData(vista.getComboBox().getSelectedItem().toString());
