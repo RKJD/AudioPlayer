@@ -11,7 +11,7 @@ import org.xml.sax.SAXException;
 public class XML {
 
     private String archivo = "audios/canciones.xml";
-    private Map<Integer, Cancion> MapCanciones;
+    public Map<Integer, Cancion> MapCanciones;
 
     public void cargarCanciones() throws FileNotFoundException, IOException, ParserConfigurationException {
 
@@ -29,7 +29,7 @@ public class XML {
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element canciones = (Element) node;
                     int id = Integer.parseInt(canciones.getAttribute("id"));
-                    Element nom = (Element) canciones.getElementsByTagName("nom").item(0);                  
+                    Element nom = (Element) canciones.getElementsByTagName("nom").item(0);
                     Element autor = (Element) canciones.getElementsByTagName("autor").item(0);
                     Element album = (Element) canciones.getElementsByTagName("album").item(0);
                     Element durada = (Element) canciones.getElementsByTagName("durada").item(0);
@@ -42,12 +42,8 @@ public class XML {
                             album.getChildNodes().item(0).getNodeValue(),
                             durada.getChildNodes().item(0).getNodeValue(),
                             ruta.getChildNodes().item(0).getNodeValue()
-                                               );
-                   MapCanciones.put(id,canc);
-                   
-                   System.out.println("Cancion cargada con exito:");
-                   System.out.println(canc);
-                   System.out.println("-------------------------------");
+                    );
+                    MapCanciones.put(id, canc);
                 }
             }
         } catch (SAXException ex) {
