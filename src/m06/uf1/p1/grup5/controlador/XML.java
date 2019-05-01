@@ -2,6 +2,8 @@ package m06.uf1.p1.grup5.controlador;
 
 import m06.uf1.p1.grup5.modelo.Cancion;
 import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
 import javax.xml.parsers.*;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
@@ -9,6 +11,7 @@ import org.xml.sax.SAXException;
 public class XML {
 
     private String archivo = "audios/canciones.xml";
+    private Map<Integer, Cancion> MapCanciones;
 
     public void cargarCanciones() throws FileNotFoundException, IOException, ParserConfigurationException {
 
@@ -40,7 +43,8 @@ public class XML {
                             durada.getChildNodes().item(0).getNodeValue(),
                             ruta.getChildNodes().item(0).getNodeValue()
                                                );
-                   // Cancion.put(ruta,autor);
+                   MapCanciones.put(id,canc);
+                   
                    System.out.println("Cancion cargada con exito:");
                    System.out.println(canc);
                    System.out.println("-------------------------------");
