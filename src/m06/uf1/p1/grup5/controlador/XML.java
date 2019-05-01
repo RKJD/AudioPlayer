@@ -4,6 +4,8 @@ import m06.uf1.p1.grup5.modelo.Cancion;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.xml.parsers.*;
 import m06.uf1.p1.grup5.modelo.AudioList;
 import org.w3c.dom.*;
@@ -20,12 +22,11 @@ public class XML {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         Document document;
         DocumentBuilder builder = factory.newDocumentBuilder();
-
         try {
 
             document = builder.parse(new File(archivo));
             Element arrel = document.getDocumentElement();
-            NodeList listaCanciones = arrel.getElementsByTagName("canciones");
+            NodeList listaCanciones = arrel.getElementsByTagName("cancion");
             
             for (int i = 0; i < listaCanciones.getLength(); i++) {
                 Node node = listaCanciones.item(i);
@@ -37,7 +38,6 @@ public class XML {
                     Element album = (Element) canciones.getElementsByTagName("album").item(0);
                     Element durada = (Element) canciones.getElementsByTagName("durada").item(0);
                     Element ruta = (Element) canciones.getElementsByTagName("ruta").item(0);
-
                     Cancion canc = new Cancion(
                             id,
                             nom.getChildNodes().item(0).getNodeValue(),
@@ -46,7 +46,7 @@ public class XML {
                             durada.getChildNodes().item(0).getNodeValue(),
                             ruta.getChildNodes().item(0).getNodeValue()
                     );
-                    MapCanciones.put(id, canc);
+                    //MapCanciones.put(id, canc);
                 }
             }
         } catch (SAXException ex) {
@@ -73,7 +73,7 @@ public class XML {
                     int id = Integer.parseInt(canciones.getAttribute("id"));
                     Element nom = (Element) canciones.getElementsByTagName("nom").item(0);
                     Element ruta = (Element) canciones.getElementsByTagName("ruta").item(0);
-
+                    
                     Playlist pl = new Playlist(id,
                             nom.getChildNodes().item(0).getNodeValue(),
                             ruta.getChildNodes().item(0).getNodeValue());
@@ -100,6 +100,15 @@ public class XML {
         }
         public String getRuta() {
             return ruta;
+        }
+    }
+    public static void main(String args[]){
+        try {
+            (new XML()).cargarCanciones();
+        } catch (IOException ex) {
+            Logger.getLogger(XML.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParserConfigurationException ex) {
+            Logger.getLogger(XML.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
