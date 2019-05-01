@@ -6,7 +6,7 @@ import javax.xml.parsers.*;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
-public class leerXML {
+public class XML {
 
     private String archivo = "audios/canciones.xml";
 
@@ -25,15 +25,25 @@ public class leerXML {
                 Node node = listaCanciones.item(i);
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element canciones = (Element) node;
-                    Element ruta = (Element) canciones.getElementsByTagName("ruta").item(0);
+                    int id = Integer.parseInt(canciones.getAttribute("id"));
+                    Element nom = (Element) canciones.getElementsByTagName("nom").item(0);                    
                     Element autor = (Element) canciones.getElementsByTagName("autor").item(0);
+                    Element album = (Element) canciones.getElementsByTagName("album").item(0);
+                    Element durada = (Element) canciones.getElementsByTagName("durada").item(0);
+                    Element ruta = (Element) canciones.getElementsByTagName("ruta").item(0);
 
                     Cancion canc = new Cancion(
-                            ruta.getChildNodes().item(0).getNodeValue(),
-                            autor.getChildNodes().item(0).getNodeValue()
+                            id,
+                            nom.getChildNodes().item(0).getNodeValue(),
+                            autor.getChildNodes().item(0).getNodeValue(),
+                            album.getChildNodes().item(0).getNodeValue(),
+                            durada.getChildNodes().item(0).getNodeValue(),
+                            ruta.getChildNodes().item(0).getNodeValue()
                                                );
                    // Cancion.put(ruta,autor);
-                    System.out.println(listaCanciones);
+                   System.out.println("Cancion cargada con exito:");
+                   System.out.println(canc);
+                   System.out.println("-------------------------------");
                 }
             }
         } catch (SAXException ex) {
