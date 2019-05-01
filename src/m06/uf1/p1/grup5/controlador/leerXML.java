@@ -1,5 +1,6 @@
 package m06.uf1.p1.grup5.controlador;
 
+import m06.uf1.p1.grup5.modelo.Cancion;
 import java.io.*;
 import javax.xml.parsers.*;
 import org.w3c.dom.*;
