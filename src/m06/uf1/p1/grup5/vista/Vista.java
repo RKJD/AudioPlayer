@@ -256,6 +256,8 @@ public class Vista {
     }
     
     public void updateSongsStart(String[] info){
+        vaciarLista();
+        lista.remove(0);
         for (int x = 0; x < info.length; x++) {
             lista.setValueAt(info[x], x, 1);
         }
@@ -274,5 +276,11 @@ public class Vista {
     }
 //</editor-fold>
     
+    public void vaciarLista(){
+        if(lista.getSize().height > 0){
+            lista.remove(0);
+            vaciarLista();
+        }
+    }
     
 }
