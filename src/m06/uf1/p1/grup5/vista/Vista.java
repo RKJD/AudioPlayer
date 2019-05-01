@@ -190,29 +190,7 @@ public class Vista {
         this.nombrePlayList=nombre;
     }
     
-    public JLabel getAutor(){
-     return autor;
-    } 
     
-    public void setAutor(JLabel nombre){
-        this.autor=nombre;
-    }
-        
-    public JLabel getDescripcion(){
-     return descripcion;
-    }
-    
-    public void setDescripcion(JLabel nombre){
-        this.descripcion=nombre;
-    }
-    
-    public JLabel getImatge(){
-     return imagen;
-    }
-    
-    public void setImatge(JLabel nombre){
-        this.imagen=nombre;
-    }   
     
     public JFrame getFinestra() {
         return finestra;
