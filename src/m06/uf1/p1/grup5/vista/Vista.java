@@ -1,7 +1,6 @@
 package m06.uf1.p1.grup5.vista;
 
 import java.awt.BorderLayout;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,6 +10,7 @@ import javax.swing.JTable;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+
 
 public class Vista {
 
@@ -41,7 +41,7 @@ public class Vista {
     private JLabel nDescripcion;
     private JLabel autor;
     private JLabel nAutor;
-    private ImageIcon imagen;
+    private JLabel imagen;
     
     private JLabel nombrePlayList;
     private JLabel nPlayList;
@@ -88,8 +88,9 @@ public class Vista {
         nPlayList = new JLabel("Nom de la playList:");
         nombrePlayList = new JLabel("pepe");
         nDescripcion= new JLabel("Descripcion:");
-        descripcion = new JLabel("desc");
-        //imagen=new ImageIcon(url);
+        descripcion = new JLabel("desc");     
+        imagen = new JLabel(new ImageIcon("images/abrupto.jpg"));
+        
         elegir = new JComboBox();
         auxDerecha.add(nPlayList);
         auxDerecha.add(nombrePlayList);

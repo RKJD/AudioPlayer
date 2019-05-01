@@ -5,16 +5,17 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import javazoom.jlgui.basicplayer.BasicPlayerException;
 import m06.uf1.p1.grup5.modelo.Audio;
+import m06.uf1.p1.grup5.modelo.AudioList;
 import m06.uf1.p1.grup5.vista.Vista;
 
 public class Controlador implements ActionListener {
 
     private Vista vista;
     private Audio audio;
-
+    
     public Controlador() {
         vista = new Vista();
-        audio = new Audio("audios/stepahead.mp3");
+        audio = new Audio("audios/akatsuki.mp3");
         afegirListenerBotons();
     }
 
