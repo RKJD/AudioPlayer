@@ -8,14 +8,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.parsers.*;
 import m06.uf1.p1.grup5.modelo.AudioList;
+import m06.uf1.p1.grup5.modelo.Playlist;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
 public class XML {
 
     private String archivo = "audios/canciones.xml";
-    public Map<Integer, Cancion> MapCanciones;
-    public Map<Integer, Playlist> MapPlaylist;
+    public Map<Integer, Cancion> MapCanciones = new HashMap();
+    public Map<Integer, Playlist> MapPlaylist = new HashMap();
     
     public void cargarCanciones() throws FileNotFoundException, IOException, ParserConfigurationException {
 
@@ -46,7 +47,7 @@ public class XML {
                             durada.getChildNodes().item(0).getNodeValue(),
                             ruta.getChildNodes().item(0).getNodeValue()
                     );
-                    //MapCanciones.put(id, canc);
+                    MapCanciones.put(id, canc);
                 }
             }
         } catch (SAXException ex) {
@@ -82,33 +83,6 @@ public class XML {
             }
         } catch (SAXException ex) {
             ex.printStackTrace();
-        }
-    }
-    private class Playlist{
-        private int id;
-        private String nom,ruta;
-        public Playlist(int id, String nom, String ruta){
-            this.id = id;
-            this.nom = nom;
-            this.ruta = ruta;
-        }
-        public int getId() {
-            return id;
-        }
-        public String getNom() {
-            return nom;
-        }
-        public String getRuta() {
-            return ruta;
-        }
-    }
-    public static void main(String args[]){
-        try {
-            (new XML()).cargarCanciones();
-        } catch (IOException ex) {
-            Logger.getLogger(XML.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ParserConfigurationException ex) {
-            Logger.getLogger(XML.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
