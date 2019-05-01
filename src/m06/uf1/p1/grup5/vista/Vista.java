@@ -15,6 +15,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
 import m06.uf1.p1.grup5.controlador.Controlador;
+import m06.uf1.p1.grup5.modelo.AudioList;
 import m06.uf1.p1.grup5.modelo.Cancion;
 import m06.uf1.p1.grup5.modelo.Playlist;
 
@@ -97,11 +98,6 @@ public class Vista {
         for (int i = 0; i != 15; i++) {
             lista.setValueAt(i + 1, i, 0);
         }
-        /*
-        for (int x = 0; x != 15; x++) {
-            lista.setValueAt(cont.getCancion(x).getNom(), x, 1);
-        }
-        */
 
         System.out.println(lista.getRowCount() + " " + lista.getColumnCount());
         lista.setShowVerticalLines(true);
@@ -256,8 +252,9 @@ public class Vista {
     }
     
     public void updateSongsStart(String[] info){
-        vaciarLista();
-        lista.remove(0);
+        for (int x = 0; x < 15; x++) {
+            lista.setValueAt("", x, 1);
+        }
         for (int x = 0; x < info.length; x++) {
             lista.setValueAt(info[x], x, 1);
         }
@@ -273,6 +270,11 @@ public class Vista {
             elegir.addItem(p.getValue().getNom());
         } 
         //elegir = new JComboBox(nomPlaylist);
+    }
+    
+    public void updateListInfo(AudioList a){        
+        nombrePlayList.setText(a.getName());
+        descripcion.setText(a.getDescription());
     }
 //</editor-fold>
     

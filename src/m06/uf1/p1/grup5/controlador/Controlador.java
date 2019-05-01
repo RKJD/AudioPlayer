@@ -27,7 +27,7 @@ public class Controlador implements ActionListener {
         isPlaying = false;
         try {
             memoria = new XML();
-            noList = new AudioList("No list", "No list selected", memoria.cargarCanciones());
+            noList = new AudioList("Sin Playlist", "No tienes ninguna playlist seleccionada.", memoria.cargarCanciones());
             memoria.cargarListas();
             vista = new Vista();
             activeList = getPlaylistData("Sin lista");
@@ -78,11 +78,14 @@ public class Controlador implements ActionListener {
                 audio.getPlayer().resume(); //continuem la reproducció de l'àudio
             } else if (gestorEsdeveniments.equals(vista.getComboBox())) {
                 //Si hem cambiat el comboBox
-                String a = vista.getComboBox().getSelectedItem().toString();
-                System.out.println(a);
-                //vista.getComboBox().getSelectedValue().toString();
- //continuem la reproducció de l'àudio                System.out.println("");
-
+                activeList = getPlaylistData(vista.getComboBox().getSelectedItem().toString());
+                vista.updateListInfo(getPlaylistData(vista.getComboBox().getSelectedItem().toString()));
+                String[] nomCanciones = new String[activeList.getTracks().length];
+                for (int i = 0; i < activeList.getTracks().length; i++) {
+                    nomCanciones[i] = getCancion(activeList.getTrack(i)).getNom();
+                }
+                vista.updateSongsStart(nomCanciones);
+                audio = new Audio(getCancion(activeList.getNextTrack()).getRuta());
             }
         } catch (BasicPlayerException e) {
             e.printStackTrace();
