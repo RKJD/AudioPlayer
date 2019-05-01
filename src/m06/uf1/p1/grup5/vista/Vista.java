@@ -261,10 +261,10 @@ public class Vista {
         }
     }
     
-    public void updateBox(Map<Integer, Playlist> playlist){
+    public void updateBox(Map<String, Playlist> playlist){
         String[] nomPlaylist = new String[playlist.size()];
         int i=0;
-        for (Map.Entry<Integer, Playlist> p : playlist.entrySet()) {
+        for (Map.Entry<String, Playlist> p : playlist.entrySet()) {
             System.out.println(p.getValue().getNom());
             nomPlaylist[i] =  p.getValue().getNom();
             i++;

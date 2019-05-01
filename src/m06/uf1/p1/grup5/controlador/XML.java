@@ -16,7 +16,7 @@ public class XML {
 
     private String archivo = "audios/canciones.xml";
     public Map<Integer, Cancion> MapCanciones = new HashMap();
-    public Map<Integer, Playlist> MapPlaylist = new HashMap();
+    public Map<String, Playlist> MapPlaylist = new HashMap();
     
     public int[] cargarCanciones() throws FileNotFoundException, IOException, ParserConfigurationException {
 
@@ -81,7 +81,7 @@ public class XML {
                     Playlist pl = new Playlist(id,
                             nom.getChildNodes().item(0).getNodeValue(),
                             ruta.getChildNodes().item(0).getNodeValue());
-                    MapPlaylist.put(id, pl);
+                    MapPlaylist.put(nom.getChildNodes().item(0).getNodeValue(), pl);
                 }
             }
         } catch (SAXException ex) {

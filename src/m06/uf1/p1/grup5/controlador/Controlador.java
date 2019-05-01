@@ -30,7 +30,7 @@ public class Controlador implements ActionListener {
             noList = new AudioList("No list", "No list selected", memoria.cargarCanciones());
             memoria.cargarListas();
             vista = new Vista();
-            activeList = getPlaylistData(0);
+            activeList = getPlaylistData("Sin lista");
 
             afegirListenerBotons();
 
@@ -93,15 +93,15 @@ public class Controlador implements ActionListener {
         return memoria.MapCanciones.get(id);
     }
 
-    public Map<Integer, Playlist> getPlaylistMap() {
+    public Map<String, Playlist> getPlaylistMap() {
         return memoria.MapPlaylist;
     }
 
-    public AudioList getPlaylistData(int id) {
-        if (id == 0) {
+    public AudioList getPlaylistData(String nombre) {
+        if (nombre.equals("Sin lista")) {
             return noList;
         } else {
-            return LeerJson.getList(memoria.MapPlaylist.get(id).getRuta());
+            return LeerJson.getList(memoria.MapPlaylist.get(nombre).getRuta());
         }
 
     }
