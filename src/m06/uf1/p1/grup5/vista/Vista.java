@@ -14,6 +14,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
 import m06.uf1.p1.grup5.controlador.Controlador;
+import m06.uf1.p1.grup5.modelo.Cancion;
 
 public class Vista {
 
@@ -50,7 +51,8 @@ public class Vista {
     private JLabel nPlayList;
 
     private JSlider barra;
-
+    
+//<editor-fold desc="Constructor">
     public Vista() {
 
         finestra = new JFrame("Reproductor Àudio");
@@ -150,7 +152,9 @@ public class Vista {
         finestra.add(total);
         finestra.setVisible(true);
     }
+//</editor-fold>
 
+//<editor-fold defaultstate="collapsed" desc="Getters y Setters">
     public JTable getTable(){
         return lista;
     }
@@ -239,4 +243,12 @@ public class Vista {
     public void setContinuar(JButton continuar) {
         this.continuar = continuar;
     }
+//</editor-fold>
+    
+//<editor-fold defaultstate="collapsed" desc="Updates">
+    public void updateSongInfo(Cancion info){
+        this.nombreCancion.setText(info.getNom());
+        this.autor.setText(info.getAutor());
+    }
+//</editor-fold>
 }

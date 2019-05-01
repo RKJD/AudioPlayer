@@ -58,12 +58,12 @@ public class AudioList {
     /***@param i Canción que se está reproduciendo actualmente
      * @return Devuelve el id de la siguiente canción en orden*/
     public int getNextTrack(int i){
-        if(i<tracks.length) return getTrack(i);
+        if(i+1<tracks.length) return getTrack(i+1);
         else return getTrack(0);
     }
     /***@return Devuelve el id de la siguiente canción en orden*/
     public int getNextTrack(){
-        if(currentSong<tracks.length) return getTrack(currentSong);
+        if(currentSong+1<tracks.length) return getTrack(currentSong+1);
         else return getTrack(0);
     }
     /***@return Devuelve el id de una canción aleatória de la lista*/
@@ -87,7 +87,7 @@ public class AudioList {
     public String toString() {
         String lista = "";
         for(int t : tracks)
-            lista+=","+tracks;
+            lista+=","+t;
         return name +": "+desc+"\n Ubicado en "+imgPath+"\n ["+lista.substring(1)+"]";
     }
 }
