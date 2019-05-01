@@ -10,38 +10,47 @@ package m06.uf1.p1.grup5.modelo;
  * @author raulk
  */
 public class Cancion {
-    private String ruta;
+
+    private String nom;
     private String autor;
-    
-    public Cancion(){        
+    private String album;
+    private String durada;
+    private String ruta;
+
+    public Cancion() {
     }
 
-    public Cancion(String ruta, String autor) {
-        this.ruta = ruta;
+    public Cancion(String nom, String autor, String album, String durada, String ruta) {
+        this.nom = nom;
         this.autor = autor;
+        this.album = album;
+        this.durada = durada;
+        this.ruta = ruta;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public String getAlbum() {
+        return album;
+    }
+
+    public String getDurada() {
+        return durada;
     }
 
     public String getRuta() {
         return ruta;
     }
 
-    public void setRuta(String ruta) {
-        this.ruta = ruta;
-    }
-
-    public String getAutor() {
-        return ruta;
-    }
-
-    public void setAutor(String autor) {
-        this.autor = autor;
-    }
-
     @Override
     public String toString() {
-        return "Ruta "+ruta+" con autor "+autor;
+        return "Nom de la canco: " + nom + "/ Nom del autor: " + autor + "/ Nom del album: " + album + "/ Durada: " + durada + "/ Ruta del arxiu: " + ruta;
     }
-    
-    
-}
 
+}
