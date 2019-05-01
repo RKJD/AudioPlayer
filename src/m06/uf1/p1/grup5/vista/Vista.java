@@ -82,7 +82,17 @@ public class Vista {
         parteIzquierda = new JPanel();
         parteIzquierda.setLayout(new GridLayout(0,1));        
         
-        lista = new JTable();               
+        lista = new JTable(15,2);
+        
+        //------------------
+        for(int i=0;i!=15;i++){
+            lista.setValueAt(i+1,i,0);
+        }
+        
+        //-----------------
+        //lista.setValueAt("hola",0,1);
+        System.out.println(lista.getRowCount()+" "+lista.getColumnCount());
+        lista.setShowVerticalLines(true);
         parteIzquierda.add(lista);
         
         nPlayList = new JLabel("Nom de la playList:");
@@ -102,9 +112,9 @@ public class Vista {
         parteDerecha.add(panellDerecha);
 
         nCancion = new JLabel("Nom de la canco:");
-        nombreCancion = new JLabel("hola");
+        nombreCancion = new JLabel();
         nAutor = new JLabel("Nom del autor:");
-        autor = new JLabel("hola");          
+        autor = new JLabel();          
         aux.add(nCancion);
         aux.add(nombreCancion);
         aux.add(nAutor);
