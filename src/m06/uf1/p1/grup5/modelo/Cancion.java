@@ -11,6 +11,7 @@ package m06.uf1.p1.grup5.modelo;
  */
 public class Cancion {
 
+    private int id;
     private String nom;
     private String autor;
     private String album;
@@ -20,7 +21,8 @@ public class Cancion {
     public Cancion() {
     }
 
-    public Cancion(String nom, String autor, String album, String durada, String ruta) {
+    public Cancion(int id, String nom, String autor, String album, String durada, String ruta) {
+        this.id = id;
         this.nom = nom;
         this.autor = autor;
         this.album = album;
@@ -28,6 +30,10 @@ public class Cancion {
         this.ruta = ruta;
     }
 
+    public int getId() {
+        return id;
+    }
+    
     public String getNom() {
         return nom;
     }
@@ -50,7 +56,7 @@ public class Cancion {
 
     @Override
     public String toString() {
-        return "Nom de la canco: " + nom + "/ Nom del autor: " + autor + "/ Nom del album: " + album + "/ Durada: " + durada + "/ Ruta del arxiu: " + ruta;
+        return "Id: "+id+" /Nom de la canco: " + nom + "/ Nom del autor: " + autor + "/ Nom del album: " + album + "/ Durada: " + durada + "/ Ruta del arxiu: " + ruta;
     }
 
 }

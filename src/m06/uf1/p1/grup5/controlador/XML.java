@@ -6,7 +6,7 @@ import javax.xml.parsers.*;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
-public class LeerXML {
+public class XML {
 
     private String archivo = "audios/canciones.xml";
 
@@ -25,13 +25,15 @@ public class LeerXML {
                 Node node = listaCanciones.item(i);
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element canciones = (Element) node;
+                    int id = Integer.parseInt(canciones.getAttribute("id"));
                     Element nom = (Element) canciones.getElementsByTagName("nom").item(0);                    
                     Element autor = (Element) canciones.getElementsByTagName("autor").item(0);
                     Element album = (Element) canciones.getElementsByTagName("album").item(0);
                     Element durada = (Element) canciones.getElementsByTagName("durada").item(0);
                     Element ruta = (Element) canciones.getElementsByTagName("ruta").item(0);
 
-                    Cancion canc = new Cancion(  
+                    Cancion canc = new Cancion(
+                            id,
                             nom.getChildNodes().item(0).getNodeValue(),
                             autor.getChildNodes().item(0).getNodeValue(),
                             album.getChildNodes().item(0).getNodeValue(),
@@ -39,7 +41,9 @@ public class LeerXML {
                             ruta.getChildNodes().item(0).getNodeValue()
                                                );
                    // Cancion.put(ruta,autor);
-                    System.out.println(canc);
+                   System.out.println("Cancion cargada con exito:");
+                   System.out.println(canc);
+                   System.out.println("-------------------------------");
                 }
             }
         } catch (SAXException ex) {
