@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import javazoom.jlgui.basicplayer.BasicPlayerException;
 import m06.uf1.p1.grup5.modelo.Audio;
+import m06.uf1.p1.grup5.modelo.AudioList;
 import m06.uf1.p1.grup5.vista.Vista;
 
 public class Controlador implements ActionListener {
