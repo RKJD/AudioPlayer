@@ -54,6 +54,7 @@ public class Controlador implements ActionListener {
         vista.getStop().addActionListener(this);
         vista.getPausa().addActionListener(this);
         vista.getContinuar().addActionListener(this);
+        vista.getComboBox().addActionListener(this);
     }
 
     //Dotem de funcionalitat als botons
@@ -75,6 +76,13 @@ public class Controlador implements ActionListener {
             } else if (gestorEsdeveniments.equals(vista.getContinuar())) {
                 //Si hem pitjat el boto stop
                 audio.getPlayer().resume(); //continuem la reproducció de l'àudio
+            } else if (gestorEsdeveniments.equals(vista.getComboBox())) {
+                //Si hem cambiat el comboBox
+                String a = vista.getComboBox().getSelectedItem().toString();
+                System.out.println(a);
+                //vista.getComboBox().getSelectedValue().toString();
+ //continuem la reproducció de l'àudio                System.out.println("");
+
             }
         } catch (BasicPlayerException e) {
             e.printStackTrace();
