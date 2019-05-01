@@ -11,7 +11,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
-
 public class Vista {
 
     private JFrame finestra;
@@ -42,7 +41,7 @@ public class Vista {
     private JLabel autor;
     private JLabel nAutor;
     private JLabel imagen;
-    
+
     private JLabel nombrePlayList;
     private JLabel nPlayList;
 
@@ -66,7 +65,7 @@ public class Vista {
 
         panell = new JPanel();
         panell.setLayout(new GridLayout(1, 5));
-        
+
         aux = new JPanel();
         aux.setLayout(new GridLayout(0, 4));
         parteAbajo = new JPanel();
@@ -80,32 +79,34 @@ public class Vista {
         parteDerecha.setLayout(new GridLayout(0, 1));
 
         parteIzquierda = new JPanel();
-        parteIzquierda.setLayout(new GridLayout(0,1));        
-        
-        lista = new JTable(15,2);
-        
+        parteIzquierda.setLayout(new GridLayout(0, 1));
+
+        lista = new JTable(15, 2);
+
         //------------------
-        for(int i=0;i!=15;i++){
-            lista.setValueAt(i+1,i,0);
+        for (int i = 0; i != 15; i++) {
+            lista.setValueAt(i + 1, i, 0);
         }
-        
-        //-----------------
-        //lista.setValueAt("hola",0,1);
-        System.out.println(lista.getRowCount()+" "+lista.getColumnCount());
+        for (int x = 0; x != 15; x++) {
+            lista.setValueAt("nombre cancion", x, 1);
+        }
+
+        System.out.println(lista.getRowCount() + " " + lista.getColumnCount());
         lista.setShowVerticalLines(true);
+        //-----------------
         parteIzquierda.add(lista);
-        
+
         nPlayList = new JLabel("Nom de la playList:");
         nombrePlayList = new JLabel("pepe");
-        nDescripcion= new JLabel("Descripcion:");
-        descripcion = new JLabel("desc");     
+        nDescripcion = new JLabel("Descripcion:");
+        descripcion = new JLabel("desc");
         imagen = new JLabel(new ImageIcon("images/abrupto.jpg"));
-        
+
         elegir = new JComboBox();
         auxDerecha.add(nPlayList);
         auxDerecha.add(nombrePlayList);
         auxDerecha.add(nDescripcion);
-        auxDerecha.add(descripcion); 
+        auxDerecha.add(descripcion);
         //auxDerecha.add(imagen);                      
         panellDerecha.add(elegir, BorderLayout.NORTH);
         panellDerecha.add(auxDerecha, BorderLayout.SOUTH);
@@ -114,12 +115,12 @@ public class Vista {
         nCancion = new JLabel("Nom de la canco:");
         nombreCancion = new JLabel();
         nAutor = new JLabel("Nom del autor:");
-        autor = new JLabel();          
+        autor = new JLabel();
         aux.add(nCancion);
         aux.add(nombreCancion);
         aux.add(nAutor);
         aux.add(autor);
-                
+
         barra = new JSlider();
         barra.setOrientation(0);
         play = new JButton("Play");
