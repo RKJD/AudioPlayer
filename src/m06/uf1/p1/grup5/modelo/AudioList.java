@@ -17,6 +17,8 @@ public class AudioList {
     private String name,desc, imgPath;
     private int[] tracks;
     private int currentSong;
+    
+//<editor-fold defaultstate="collapsed" desc="Constructors">
     public AudioList(String name, String description, int[] tracks){
         defineValues(name, description, tracks);
         imgPath = null;
@@ -31,12 +33,32 @@ public class AudioList {
         this.tracks = tracks;
         currentSong = tracks.length-1;
     }
+//</editor-fold>
+    
+//<editor-fold desc="Getters">
     /***@return Devuelve el nombre de la lista*/
     public String getName(){return name;}
     /***@return Devuelve la descripción de la lista*/
     public String getDescription(){return desc;}
     /***@return Devuelve el orden de ids en formato de array*/
     public int[] getTracks(){return tracks;}
+    /***
+     * Comprueba si la lista tiene una imagen y el archivo existe.
+     * @exception NoSuchFieldException si esta lista no tiene imagen
+     * @exception FileNotFoundException si el archivo no existe
+     * @return Devuelve el archivo si existe
+     */
+    public File getImage() throws NoSuchFieldException, FileNotFoundException{
+        if(imgPath.equals(null)) throw new NoSuchFieldException("This album have no Picture");
+        else{
+            File retorno = new File(imgPath);
+            if(retorno.exists()) return retorno;
+            else throw new FileNotFoundException("This file doesn't exist");
+        }
+    }
+//</editor-fold>
+    
+//<editor-fold desc="Nav Getters">
     /***@return Devuelve el id de una canción de la lista en la posición especificada*/
     public int getTrack(int i){
         currentSong = i;
@@ -55,18 +77,6 @@ public class AudioList {
     }
     /***@return Devuelve el id de una canción aleatória de la lista*/
     public int getTrack(Random rand){return tracks[(int)(rand.nextFloat()*tracks.length)];}
-    /***
-     * Comprueba si la lista tiene una imagen y el archivo existe.
-     * @exception NoSuchFieldException si esta lista no tiene imagen
-     * @exception FileNotFoundException si el archivo no existe
-     * @return Devuelve el archivo si existe
-     */
-    public File getImage() throws NoSuchFieldException, FileNotFoundException{
-        if(imgPath.equals(null)) throw new NoSuchFieldException("This album have no Picture");
-        else{
-            File retorno = new File(imgPath);
-            if(retorno.exists()) return retorno;
-            else throw new FileNotFoundException("This file doesn't exist");
-        }
-    }
+//</editor-fold>
+    
 }
