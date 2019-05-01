@@ -2,6 +2,8 @@ package m06.uf1.p1.grup5.vista;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -10,7 +12,8 @@ import javax.swing.JTable;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-
+import javax.swing.JTabbedPane;
+import m06.uf1.p1.grup5.controlador.Controlador;
 
 public class Vista {
 
@@ -42,7 +45,7 @@ public class Vista {
     private JLabel autor;
     private JLabel nAutor;
     private JLabel imagen;
-    
+
     private JLabel nombrePlayList;
     private JLabel nPlayList;
 
@@ -66,7 +69,7 @@ public class Vista {
 
         panell = new JPanel();
         panell.setLayout(new GridLayout(1, 5));
-        
+
         aux = new JPanel();
         aux.setLayout(new GridLayout(0, 4));
         parteAbajo = new JPanel();
@@ -80,32 +83,36 @@ public class Vista {
         parteDerecha.setLayout(new GridLayout(0, 1));
 
         parteIzquierda = new JPanel();
-        parteIzquierda.setLayout(new GridLayout(0,1));        
-        
-        lista = new JTable(15,2);
-        
+        parteIzquierda.setLayout(new GridLayout(0, 1));
+
+        lista = new JTable(15, 2);
+        lista.setEnabled(true);
+        //Controlador cont=new Controlador();
+
         //------------------
-        for(int i=0;i!=15;i++){
-            lista.setValueAt(i+1,i,0);
+        for (int i = 0; i != 15; i++) {
+            lista.setValueAt(i + 1, i, 0);
         }
-        
-        //-----------------
-        //lista.setValueAt("hola",0,1);
-        System.out.println(lista.getRowCount()+" "+lista.getColumnCount());
+        for (int x = 0; x != 15; x++) {
+            //lista.setValueAt(cont.getCancion(x).getNom(), x, 1);
+        }
+
+        System.out.println(lista.getRowCount() + " " + lista.getColumnCount());
         lista.setShowVerticalLines(true);
+        //-----------------
         parteIzquierda.add(lista);
-        
+
         nPlayList = new JLabel("Nom de la playList:");
         nombrePlayList = new JLabel("pepe");
-        nDescripcion= new JLabel("Descripcion:");
-        descripcion = new JLabel("desc");     
+        nDescripcion = new JLabel("Descripcion:");
+        descripcion = new JLabel("desc");
         imagen = new JLabel(new ImageIcon("images/abrupto.jpg"));
-        
+
         elegir = new JComboBox();
         auxDerecha.add(nPlayList);
         auxDerecha.add(nombrePlayList);
         auxDerecha.add(nDescripcion);
-        auxDerecha.add(descripcion); 
+        auxDerecha.add(descripcion);
         //auxDerecha.add(imagen);                      
         panellDerecha.add(elegir, BorderLayout.NORTH);
         panellDerecha.add(auxDerecha, BorderLayout.SOUTH);
@@ -114,12 +121,12 @@ public class Vista {
         nCancion = new JLabel("Nom de la canco:");
         nombreCancion = new JLabel();
         nAutor = new JLabel("Nom del autor:");
-        autor = new JLabel();          
+        autor = new JLabel();
         aux.add(nCancion);
         aux.add(nombreCancion);
         aux.add(nAutor);
         aux.add(autor);
-                
+
         barra = new JSlider();
         barra.setOrientation(0);
         play = new JButton("Play");
@@ -144,6 +151,69 @@ public class Vista {
         finestra.setVisible(true);
     }
 
+    public JTable getTable(){
+        return lista;
+    }
+    public void setTable(JTable table){
+        this.lista=table;
+    }
+    
+    public JComboBox getComboBox(){
+        return elegir;
+    }
+    
+    public void setComboBox(JComboBox comboBox){
+        this.elegir=comboBox;
+    }
+    
+    public JSlider getSlider(){
+        return barra;
+    }
+    
+    public void setSlider(JSlider slider){
+        this.barra=slider;
+    }
+    
+    public JLabel getNombreCancion(){
+     return nombreCancion;
+    }
+    
+    public void setNombreCancion(JLabel nombre){
+        this.nombreCancion=nombre;
+    }
+    
+    public JLabel getNombrePlayList(){
+     return nombrePlayList;
+    }
+    
+    public void setNombrePlayList(JLabel nombre){
+        this.nombrePlayList=nombre;
+    }
+    
+    public JLabel getAutor(){
+     return autor;
+    } 
+    
+    public void setAutor(JLabel nombre){
+        this.autor=nombre;
+    }
+        
+    public JLabel getDescripcion(){
+     return descripcion;
+    }
+    
+    public void setDescripcion(JLabel nombre){
+        this.descripcion=nombre;
+    }
+    
+    public JLabel getImatge(){
+     return imagen;
+    }
+    
+    public void setImatge(JLabel nombre){
+        this.imagen=nombre;
+    }   
+    
     public JFrame getFinestra() {
         return finestra;
     }
