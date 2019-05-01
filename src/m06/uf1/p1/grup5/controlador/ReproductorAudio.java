@@ -21,7 +21,7 @@ public class ReproductorAudio {
         try {
             XML xml = new XML();
             xml.cargarCanciones();
-            //Controlador controlador = new Controlador();     
+            Controlador controlador = new Controlador();     
         } catch (IOException ex) {
             Logger.getLogger(ReproductorAudio.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParserConfigurationException ex) {
