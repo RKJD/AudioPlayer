@@ -23,7 +23,9 @@ public class XML {
 
             document = builder.parse(new File(archivo));
             Element arrel = document.getDocumentElement();
-            NodeList listaCanciones = arrel.getChildNodes();
+            NodeList arrel.getElementsByTagName("canciones");
+            NodeList data = arrel.getChildNodes();
+            
             for (int i = 0; i < listaCanciones.getLength(); i++) {
                 Node node = listaCanciones.item(i);
                 if (node.getNodeType() == Node.ELEMENT_NODE) {

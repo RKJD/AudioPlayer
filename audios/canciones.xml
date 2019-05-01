@@ -1,128 +1,129 @@
 <?xml version="1.0"?>
-<canciones>
+<data>
+    <canciones>
 
-	<cancion id="1">
-		<nom>Akatsuki gang</nom>		
-		<autor>suicideboyz</autor>
-		<album>albumboyz</album>
-		<durada>00:14</durada>
-		<ruta>audios/akatsuki.mp3</ruta>
-	</cancion>
-	
-	<cancion id="2">
-		<nom>Attack on titan</nom>		
-		<autor>suicideboyz</autor>
-		<album>albumboyz</album>
-		<durada>00:13</durada>
-		<ruta>audios/attack.mp3</ruta>
-	</cancion>	
-	
-	<cancion id="3">
-		<nom>Crybaby</nom>		
-		<autor>LilPeep</autor>
-		<album>albumboyz</album>
-		<durada>00:15</durada>
-		<ruta>audios/crybaby.mp3</ruta>
-	</cancion>
-	
-	<cancion id="4">
-		<nom>The Girl I Haven't met</nom>		
-		<autor>kudasai</autor>
-		<album>chill</album>
-		<durada>00:15</durada>
-		<ruta>audios/girl.mp3</ruta>
-	</cancion>
+        <cancion id="1">
+            <nom>Akatsuki gang</nom>		
+            <autor>suicideboyz</autor>
+            <album>albumboyz</album>
+            <durada>00:14</durada>
+            <ruta>audios/akatsuki.mp3</ruta>
+        </cancion>
 
-	<cancion id="5">
-		<nom>I Am</nom>		
-		<autor>Uchiha</autor>
-		<album>mubla</album>
-		<durada>00:19</durada>
-		<ruta>audios/iam.mp3</ruta>
-	</cancion>
-	
-	<cancion id="6">
-		<nom>Joan Of Arc</nom>		
-		<autor>Night Lovell</autor>
-		<album>mubla</album>
-		<durada>00:15</durada>
-		<ruta>audios/joan.mp3</ruta>
-	</cancion>
-	
-	 <cancion id="7">
-		<nom>Losing Interest</nom>		
-		<autor>Shiloh</autor>
-		<album>chill</album>
-		<durada>00:16</durada>
-		<ruta>audios/losing.mp3</ruta>
-	</cancion>
-	
-	<cancion id="8">
-		<nom>LTE</nom>		
-		<autor>suicideboyz</autor>
-		<album>albumboyz</album>
-		<durada>00:15</durada>
-		<ruta>audios/lte.mp3</ruta>
-	</cancion>
-	
-	<cancion id="9">
-		<nom>Sad Uchiha</nom>		
-		<autor>Uchiha</autor>
-		<album>chill</album>
-		<durada>00:11</durada>
-		<ruta>audios/sad.mp3</ruta>
-	</cancion>
-	
-	<cancion id="10">
-		<nom>I'll keep you safe</nom>		
-		<autor>Shiloh</autor>
-		<album>mubla</album>
-		<durada>00:16</durada>
-		<ruta>audios/safe.mp3</ruta>
-	</cancion>
-	
-	<cancion id="11">
-		<nom>Im sorry</nom>		
-		<autor>Swell</autor>
-		<album>mubla</album>
-		<durada>00:14</durada>
-		<ruta>audios/sorry.mp3</ruta>
-	</cancion>
-	
-	<cancion id="12">
-		<nom>South Side ft. Naruto</nom>		
-		<autor>suicideboyz</autor>
-		<album>albumboyz</album>
-		<durada>00:15</durada>
-		<ruta>audios/southside.mp3</ruta>
-	</cancion>	
-	
-	<cancion id="13">
-		<nom>Step Ahead</nom>		
-		<autor>liu</autor>
-		<album>mubla</album>
-		<durada>00:22</durada>
-		<ruta>audios/stepahead.mp3</ruta>
-	</cancion>	
-	
-	<cancion id="14">
-		<nom>I Don't Wanna Do This Anymore</nom>		
-		<autor>xxtentacion</autor>
-		<album>chill</album>
-		<durada>00:15</durada>
-		<ruta>audios/wanna.mp3</ruta>
-	</cancion>	
-	
-	<cancion id="15">
-		<nom>Baby you're worth it</nom>		
-		<autor>kina</autor>
-		<album>chill</album>
-		<durada>00:15</durada>
-		<ruta>audios/worthit.mp3</ruta>
-	</cancion>
-	
-</canciones>
-	<!--<playlists>
+        <cancion id="2">
+            <nom>Attack on titan</nom>		
+            <autor>suicideboyz</autor>
+            <album>albumboyz</album>
+            <durada>00:13</durada>
+            <ruta>audios/attack.mp3</ruta>
+        </cancion>	
+
+        <cancion id="3">
+            <nom>Crybaby</nom>		
+            <autor>LilPeep</autor>
+            <album>albumboyz</album>
+            <durada>00:15</durada>
+            <ruta>audios/crybaby.mp3</ruta>
+        </cancion>
+
+        <cancion id="4">
+            <nom>The Girl I Haven't met</nom>		
+            <autor>kudasai</autor>
+            <album>chill</album>
+            <durada>00:15</durada>
+            <ruta>audios/girl.mp3</ruta>
+        </cancion>
+
+        <cancion id="5">
+            <nom>I Am</nom>		
+            <autor>Uchiha</autor>
+            <album>mubla</album>
+            <durada>00:19</durada>
+            <ruta>audios/iam.mp3</ruta>
+        </cancion>
+
+        <cancion id="6">
+            <nom>Joan Of Arc</nom>		
+            <autor>Night Lovell</autor>
+            <album>mubla</album>
+            <durada>00:15</durada>
+            <ruta>audios/joan.mp3</ruta>
+        </cancion>
+
+         <cancion id="7">
+            <nom>Losing Interest</nom>		
+            <autor>Shiloh</autor>
+            <album>chill</album>
+            <durada>00:16</durada>
+            <ruta>audios/losing.mp3</ruta>
+        </cancion>
+
+        <cancion id="8">
+            <nom>LTE</nom>		
+            <autor>suicideboyz</autor>
+            <album>albumboyz</album>
+            <durada>00:15</durada>
+            <ruta>audios/lte.mp3</ruta>
+        </cancion>
+
+        <cancion id="9">
+            <nom>Sad Uchiha</nom>		
+            <autor>Uchiha</autor>
+            <album>chill</album>
+            <durada>00:11</durada>
+            <ruta>audios/sad.mp3</ruta>
+        </cancion>
+
+        <cancion id="10">
+            <nom>I'll keep you safe</nom>		
+            <autor>Shiloh</autor>
+            <album>mubla</album>
+            <durada>00:16</durada>
+            <ruta>audios/safe.mp3</ruta>
+        </cancion>
+
+        <cancion id="11">
+            <nom>Im sorry</nom>		
+            <autor>Swell</autor>
+            <album>mubla</album>
+            <durada>00:14</durada>
+            <ruta>audios/sorry.mp3</ruta>
+        </cancion>
+
+        <cancion id="12">
+            <nom>South Side ft. Naruto</nom>		
+            <autor>suicideboyz</autor>
+            <album>albumboyz</album>
+            <durada>00:15</durada>
+            <ruta>audios/southside.mp3</ruta>
+        </cancion>	
+
+        <cancion id="13">
+            <nom>Step Ahead</nom>		
+            <autor>liu</autor>
+            <album>mubla</album>
+            <durada>00:22</durada>
+            <ruta>audios/stepahead.mp3</ruta>
+        </cancion>	
+
+        <cancion id="14">
+            <nom>I Don't Wanna Do This Anymore</nom>		
+            <autor>xxtentacion</autor>
+            <album>chill</album>
+            <durada>00:15</durada>
+            <ruta>audios/wanna.mp3</ruta>
+        </cancion>	
+
+        <cancion id="15">
+            <nom>Baby you're worth it</nom>		
+            <autor>kina</autor>
+            <album>chill</album>
+            <durada>00:15</durada>
+            <ruta>audios/worthit.mp3</ruta>
+        </cancion>
+
+    </canciones>
+	<playlists>
 		<playlist id="1">
 			<nom>Hiphop</nom>
 			<ruta>listas/playlistHiphop.json</ruta>
@@ -135,4 +136,5 @@
 			<nom>Chill</nom>
 			<ruta>listas/playlistChill.json</ruta>
 		</playlist>
-	</playlists>-->
+	</playlists>
+</data>
