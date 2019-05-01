@@ -12,10 +12,10 @@ public class Controlador implements ActionListener {
 
     private Vista vista;
     private Audio audio;
-
+    
     public Controlador() {
         vista = new Vista();
-        audio = new Audio("audios/stepahead.mp3");
+        audio = new Audio("audios/akatsuki.mp3");
         afegirListenerBotons();
     }
 

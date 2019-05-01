@@ -119,20 +119,22 @@
 		<album>chill</album>
 		<durada>00:15</durada>
 		<ruta>audios/worthit.mp3</ruta>
-	</cancion>	
+	</cancion>
+	<!--
+	<playlists>
+		<playlist id="1">
+			<nom>Hiphop</nom>
+			<ruta>listas/playlistHiphop.json</ruta>
+		</playlist>
+		<playlist id="2">
+			<nom>Abrupto</nom>
+			<ruta>listas/playlistAbrupto.json</ruta>
+		</playlist>
+		<playlist id="3">
+			<nom>Chill</nom>
+			<ruta>listas/playlistChill.json</ruta>
+		</playlist>
+	</playlists>
+	-->
 	
 </canciones>
-<playlists>
-	<playlist id="1">
-		<nom>Hiphop</nom>
-		<ruta>listas/playlistHiphop.json</ruta>
-	</playlist>
-	<playlist id="2">
-		<nom>Abrupto</nom>
-		<ruta>listas/playlistAbrupto.json</ruta>
-	</playlist>
-	<playlist id="3">
-		<nom>Chill</nom>
-		<ruta>listas/playlistChill.json</ruta>
-	</playlist>
-</playlists>

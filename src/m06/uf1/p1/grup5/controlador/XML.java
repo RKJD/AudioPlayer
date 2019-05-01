@@ -26,7 +26,7 @@ public class XML {
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element canciones = (Element) node;
                     int id = Integer.parseInt(canciones.getAttribute("id"));
-                    Element nom = (Element) canciones.getElementsByTagName("nom").item(0);                    
+                    Element nom = (Element) canciones.getElementsByTagName("nom").item(0);                  
                     Element autor = (Element) canciones.getElementsByTagName("autor").item(0);
                     Element album = (Element) canciones.getElementsByTagName("album").item(0);
                     Element durada = (Element) canciones.getElementsByTagName("durada").item(0);
