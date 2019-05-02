@@ -81,11 +81,9 @@ public class Controlador implements ActionListener {
                             System.out.println("Celda vacia");                            
                             //audio = new Audio(getCancion(activeList.getTrack(vista.getTable().getSelectedRow())).getRuta());
                         }
-
                     } catch (BasicPlayerException ex) {
                         Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
                     }
-
                     System.out.println(vista.getTable().getSelectedRow());
                 }
             }
