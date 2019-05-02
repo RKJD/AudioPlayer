@@ -12,7 +12,7 @@ public class AudioList {
 //<editor-fold defaultstate="collapsed" desc="Constructors">
     public AudioList(String name, String description, int[] tracks){
         defineValues(name, description, tracks);
-        imgPath = null;
+        imgPath = "nope";
     }
     public AudioList(String name, String description, String picture, int[] tracks){
         defineValues(name, description, tracks);
@@ -40,7 +40,7 @@ public class AudioList {
      * @return Devuelve el archivo si existe
      */
     public File getImage() throws NoSuchFieldException, FileNotFoundException{
-        if(imgPath.equals(null)) throw new NoSuchFieldException("This album have no Picture");
+        if(imgPath.equals("nope")) throw new NoSuchFieldException("This album have no Picture");
         else{
             File retorno = new File(imgPath);
             if(retorno.exists()) return retorno;

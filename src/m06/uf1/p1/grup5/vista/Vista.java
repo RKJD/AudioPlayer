@@ -369,6 +369,7 @@ public class Vista {
             erIcono = new ImageIcon(
                     a.getImage().toURI().toURL()    //Imagen del album
             );
+            System.out.println("llego");
         }catch (FileNotFoundException e){
             erIcono = pillarimagen("images/notFound.jpg");
         }catch (NoSuchFieldException e){
@@ -376,7 +377,6 @@ public class Vista {
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
-        System.out.println("Llego4");
         imagePlaylist.setIcon(erIcono);
     }
 
