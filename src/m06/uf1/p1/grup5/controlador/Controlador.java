@@ -69,16 +69,19 @@ public class Controlador implements ActionListener {
             public void valueChanged(ListSelectionEvent lse) {
                 if (!lse.getValueIsAdjusting() && vista.getTable().getSelectedRow() != -1) {
                     try {
-                        audio.getPlayer().stop();
-                        if (isShuffle) {
+                        
+                        if (vista.getTable().getSelectedRow() < activeList.getTracks().length) {
+                            audio.getPlayer().stop();
                             audio = new Audio(getCancion(activeList.getTrack(vista.getTable().getSelectedRow())).getRuta());
+                            vista.updateSongInfo(getCancion(activeList.getTrack()));
+                            if (isPlaying) {
+                                audio.getPlayer().play();
+                            }
                         } else {
-                            audio = new Audio(getCancion(activeList.getTrack(vista.getTable().getSelectedRow())).getRuta());
+                            System.out.println("Celda vacia");                            
+                            //audio = new Audio(getCancion(activeList.getTrack(vista.getTable().getSelectedRow())).getRuta());
                         }
-                        vista.updateSongInfo(getCancion(activeList.getTrack()));
-                        if (isPlaying) {
-                            audio.getPlayer().play();
-                        }
+
                     } catch (BasicPlayerException ex) {
                         Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
                     }
