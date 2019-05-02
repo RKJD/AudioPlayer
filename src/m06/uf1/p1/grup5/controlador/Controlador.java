@@ -62,7 +62,8 @@ public class Controlador implements ActionListener {
         vista.getContinuar().addActionListener(this);
         vista.getAnteriro().addActionListener(this);
         vista.getSiguiente().addActionListener(this);
-        vista.getComboBox().addActionListener(this);        
+        vista.getShuffle().addActionListener(this);
+        vista.getComboBox().addActionListener(this);
         vista.getTable().getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent lse) {
@@ -115,6 +116,9 @@ public class Controlador implements ActionListener {
                 tryToNav(activeList.getPreviousTrack());
             } else if (gestorEsdeveniments.equals(vista.getSiguiente())) {
                 tryToNav(activeList.getNextTrack());
+            } else if (gestorEsdeveniments.equals(vista.getShuffle())) {
+                isShuffle = !isShuffle;
+                vista.updateShuffleText(isShuffle);
             } else if (gestorEsdeveniments.equals(vista.getComboBox())) {
                 //Si hem cambiat el comboBox
                 activeList = getPlaylistData(vista.getComboBox().getSelectedItem().toString());
