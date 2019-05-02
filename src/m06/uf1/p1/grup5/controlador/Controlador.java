@@ -97,6 +97,7 @@ public class Controlador implements ActionListener {
                 vista.updateSongInfo(getCancion(activeList.getTrack()));
                 isPlaying = true;
                 vista.updateSlider(2);
+                vista.updateDurada(getCancion(activeList.getTrack()).getDurada().toString());
             } else if (gestorEsdeveniments.equals(vista.getStop())) {
                 //Si hem pitjat el boto stop
                 audio.getPlayer().stop(); //parem la reproducció de l'àudio
