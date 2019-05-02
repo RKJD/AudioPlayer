@@ -162,7 +162,7 @@ public class Vista {
         
         btnAnterior=new JButton("Anterior");
         btnSiguiente=new JButton("Siguiente");
-        btnShuffle=new JButton("Shuffle");
+        btnShuffle=new JButton("in Bucle mode");
         auxAbajo.add(btnAnterior);
         auxAbajo.add(btnShuffle);
         auxAbajo.add(btnSiguiente);
@@ -330,6 +330,10 @@ public class Vista {
     
     public void updateSlider(int x) {
         barra.setValue(x);
+    }
+    public void updateShuffleText(boolean mode) {
+        if(mode) btnShuffle.setText("in Shuffle mode");
+        else  btnShuffle.setText("in Bucle mode");
     }
 //</editor-fold>
 
