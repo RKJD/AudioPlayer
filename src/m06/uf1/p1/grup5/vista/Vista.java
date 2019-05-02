@@ -118,7 +118,6 @@ public class Vista {
 
         lista = new JTable(15, 1);
         
-       
         lista.setEnabled(true);
         lista.setShowVerticalLines(true);
 
