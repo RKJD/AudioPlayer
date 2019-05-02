@@ -325,6 +325,14 @@ public class Vista {
     public void setShuffle(JButton shuffle) {
         this.btnShuffle = shuffle;
     }
+    
+    public JLabel getImagen(){
+        return imagePlaylist;
+    }
+    
+    public void setImagen(JLabel imagen){
+        this.imagePlaylist=imagen;
+    }
 //</editor-fold>
 
 //<editor-fold desc="Updates">
@@ -357,6 +365,13 @@ public class Vista {
     public void updateListInfo(AudioList a) {
         nombrePlayList.setText(a.getName());
         descripcion.setText(a.getDescription());
+        ImageIcon erIcono = null;
+        try{
+        erIcono = new ImageIcon(
+                (a.getImage()).toURI().toURL()
+        );
+        } catch (Exception e){}
+        
     }
 
     public void updateSlider(int x) {

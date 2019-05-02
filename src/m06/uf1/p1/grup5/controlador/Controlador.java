@@ -131,7 +131,7 @@ public class Controlador implements ActionListener {
                 for (int i = 0; i < activeList.getTracks().length; i++) {
                     nomCanciones[i] = getCancion(activeList.getTrack(i)).getNom();
                 }
-                vista.updateSongsStart(nomCanciones);
+                vista.updateSongsStart(nomCanciones);                
                 wipeSong();
                 audio = new Audio(getCancion(activeList.getNextTrack()).getRuta());
             }
