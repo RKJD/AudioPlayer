@@ -100,15 +100,7 @@ public class Vista {
         
         lista = new JTable(15, 1);
         
-        lista.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent lse) {
-                
-                if (!lse.getValueIsAdjusting() && lista.getSelectedRow() != -1)
-                System.out.println("hola");
-                
-            }
-        });
+       
         lista.setEnabled(true);
         //Controlador cont=new Controlador();
 

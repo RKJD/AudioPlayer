@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.xml.parsers.ParserConfigurationException;
 import javazoom.jlgui.basicplayer.BasicPlayerException;
 import m06.uf1.p1.grup5.modelo.Audio;
@@ -53,11 +55,19 @@ public class Controlador implements ActionListener {
         vista.getPlay().addActionListener(this);
         vista.getStop().addActionListener(this);
         vista.getPausa().addActionListener(this);
-        vista.getContinuar().addActionListener(this);       
+        vista.getContinuar().addActionListener(this);
         vista.getComboBox().addActionListener(this);
+        vista.getTable().getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent lse) {
+                if (!lse.getValueIsAdjusting() && vista.getTable().getSelectedRow() != -1) {
+                    System.out.println(vista.getTable().getSelectedRow());
+                }
+            }
+        });
     }
 
-    //Dotem de funcionalitat als botons
+//Dotem de funcionalitat als botons
     public void actionPerformed(ActionEvent esdeveniment) {
         //Declarem el gestor d'esdeveniments
         Object gestorEsdeveniments = esdeveniment.getSource();
@@ -112,13 +122,15 @@ public class Controlador implements ActionListener {
             return LeerJson.getList(memoria.MapPlaylist.get(nombre).getRuta());
         }
     }
-    
-    public void wipeSong(){
+
+    public void wipeSong() {
         try {
             vista.updateSongInfo(new Cancion(0, "", "", "", "", ""));
             audio.getPlayer().stop();
+
         } catch (BasicPlayerException ex) {
-            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Controlador.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
