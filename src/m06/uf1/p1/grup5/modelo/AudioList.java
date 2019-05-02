@@ -66,6 +66,17 @@ public class AudioList {
         if(currentSong+1<tracks.length) return getTrack(currentSong+1);
         else return getTrack(0);
     }
+    /***@param i Canción que se está reproduciendo actualmente
+     * @return Devuelve el id de la anterior canción en orden*/
+    public int getPreviousTrack(int i){
+        if(i>0) return getTrack(i-1);
+        else return getTrack(tracks.length-1);
+    }
+    /***@return Devuelve el id de la anterior canción en orden*/
+    public int getPreviousTrack(){
+        if(currentSong>0) return getTrack(currentSong-1);
+        else return getTrack(tracks.length-1);
+    }
     /***@return Devuelve el id de una canción aleatória de la lista*/
     public int getTrack(Random rand){return getTrack((int)(rand.nextFloat()*tracks.length));}
     /***@return Devuelve el id de la canción actual de la lista*/
