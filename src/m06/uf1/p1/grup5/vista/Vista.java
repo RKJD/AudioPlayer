@@ -143,15 +143,16 @@ public class Vista {
 
         elegir = new JComboBox(new String[]{"Sin lista"});
         
+        //auxDerecha.add(imagePlaylist); 
         
         auxDerecha.add(nPlayList);
         auxDerecha.add(nombrePlayList);
         auxDerecha.add(nDescripcion);
         auxDerecha.add(descripcion);
-        auxDerecha.add(imagePlaylist);
         
-        //auxDerecha.add(imagePlaylist);                      
+                             
         panellDerecha.add(elegir, BorderLayout.NORTH);
+        panellDerecha.add(imagePlaylist,BorderLayout.CENTER);
         panellDerecha.add(auxDerecha, BorderLayout.SOUTH);
         parteDerecha.add(panellDerecha);
 
