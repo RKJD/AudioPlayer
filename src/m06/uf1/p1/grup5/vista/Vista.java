@@ -32,11 +32,14 @@ public class Vista {
     private JPanel parteMedio;
     private JPanel vacio;
     private JPanel total;
+    private JPanel auxAbajo;
     
     private JButton play;
     private JButton stop;
     private JButton pausa;
     private JButton continuar;
+    private JButton btnAnterior;
+    private JButton btnSiguiente;
     
     private JTable lista;
     
@@ -74,6 +77,8 @@ public class Vista {
         
         panell = new JPanel();
         panell.setLayout(new GridLayout(1, 5));
+        auxAbajo = new JPanel();
+        auxAbajo.setLayout(new GridLayout(1, 2));
         
         aux = new JPanel();
         aux.setLayout(new GridLayout(0, 4));
@@ -142,8 +147,14 @@ public class Vista {
         panell.add(continuar);
         panell.add(stop);
         
+        btnAnterior=new JButton("Anterior");
+        btnSiguiente=new JButton("Siguiente");
+        auxAbajo.add(btnAnterior);
+        auxAbajo.add(btnSiguiente);
+        
         parteAbajo.add(aux);
         parteAbajo.add(barra);
+        parteAbajo.add(auxAbajo);
         parteAbajo.add(panell);
         
         parteMedio.add(parteIzquierda);
