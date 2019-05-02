@@ -11,6 +11,7 @@ import java.net.MalformedURLException;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.BoundedRangeModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -388,11 +389,15 @@ public class Vista {
         int min = Integer.parseInt(minutos);
         min = min*60;
         int value = sec + min;
-        scroll.setValue(value);
+        scroll.getModel().setExtent(1);
+        scroll.setMaximum(value+1);
     }
-
-    public void updateDuradaActual(String x) {
-        tiempo.setText(x);
+    public void updateDuradaActual(int x) {
+        int min = (int)(x/60);
+        int seg = x-(min*60);
+        if(seg<10) tiempo.setText(min+":0"+seg);
+        else tiempo.setText(min+":"+seg);
+        scroll.setValue(x);
     }
 
     public void updateDurada(String x) {
