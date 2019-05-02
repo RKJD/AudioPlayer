@@ -122,7 +122,6 @@ public class Vista {
 
         lista = new JTable(15, 1);
         
-       
         lista.setEnabled(true);
         lista.setShowVerticalLines(true);
 
@@ -169,6 +168,9 @@ public class Vista {
         barra.setOrientation(0);
         barra.setValue(0);
         scroll=new JScrollBar();
+        scroll.setMinimum(minimum);
+        scroll.setMaximum(maximum);
+        
         scroll.setOrientation(0);
         play = new JButton("Play");
         stop = new JButton("Stop");
@@ -382,6 +384,13 @@ public class Vista {
 
     public void updateSlider(int x) {
         barra.setValue(x);
+    }
+    
+    public void updateScroll(int x){
+        scroll.setValue(x);
+    }
+    public void updateDuradaActual(String x){
+        tiempo.setText(x);
     }
     
     public void updateDurada(String x){
