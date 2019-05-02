@@ -73,6 +73,7 @@ public class Controlador implements ActionListener {
                         if (vista.getTable().getSelectedRow() < activeList.getTracks().length) {
                             audio.getPlayer().stop();
                             audio = new Audio(getCancion(activeList.getTrack(vista.getTable().getSelectedRow())).getRuta());
+                            vista.updateDurada(getCancion(activeList.getTrack()).getDurada().toString());
                             vista.updateSongInfo(getCancion(activeList.getTrack()));
                             if (isPlaying) {
                                 audio.getPlayer().play();
