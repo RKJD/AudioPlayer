@@ -37,6 +37,8 @@ public class Vista {
     private JPanel vacio;
     private JPanel total;
     private JPanel auxAbajo;
+    private JPanel aux2Abajo;
+    private JPanel aux3Abajo;
 
     private JButton play;
     private JButton stop;
@@ -58,6 +60,9 @@ public class Vista {
     private JLabel nAutor;    
     private JLabel imagePlaylist;
     private ImageIcon icono;
+    private JLabel tiempo;
+    private JLabel tiempo1;
+    private JLabel tiempo2;
     
 
     private JLabel nombrePlayList;
@@ -92,6 +97,9 @@ public class Vista {
 
         aux = new JPanel();
         aux.setLayout(new GridLayout(0, 4));
+        aux2Abajo=new JPanel();
+        aux2Abajo.setLayout(new GridLayout(0,2));
+        aux3Abajo=new JPanel();
         parteAbajo = new JPanel();
         parteAbajo.setLayout(new GridLayout(0, 1));
 
@@ -161,13 +169,21 @@ public class Vista {
         btnAnterior = new JButton("Anterior");
         btnSiguiente = new JButton("Siguiente");
         btnShuffle = new JButton("Shuffle");
+        tiempo=new JLabel("hola");
+        tiempo1=new JLabel("/");
+        tiempo2=new JLabel("hola");
         auxAbajo.add(btnAnterior);
         auxAbajo.add(btnShuffle);
         auxAbajo.add(btnSiguiente);
 
         parteAbajo.add(aux);
         //parteAbajo.add(barra);
-        parteAbajo.add(scroll);
+        aux3Abajo.add(tiempo);
+        aux3Abajo.add(tiempo1);
+        aux3Abajo.add(tiempo2);
+        aux2Abajo.add(scroll);
+        aux2Abajo.add(aux3Abajo);
+        parteAbajo.add(aux2Abajo);
         parteAbajo.add(auxAbajo);
         parteAbajo.add(panell);
 
