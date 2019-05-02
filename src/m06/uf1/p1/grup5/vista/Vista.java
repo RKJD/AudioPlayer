@@ -98,24 +98,24 @@ public class Vista {
         parteIzquierda = new JPanel();
         parteIzquierda.setLayout(new GridLayout(0, 1));
         
-        lista = new JTable(15, 2);
+        lista = new JTable(15, 1);
         
         lista.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent lse) {
                 
-                int y=0;
-                System.out.println(y+"hola");
-                y++;
+                if (!lse.getValueIsAdjusting() && lista.getSelectedRow() != -1)
+                System.out.println("hola");
+                
             }
         });
         lista.setEnabled(true);
         //Controlador cont=new Controlador();
 
         //------------------
-        for (int i = 0; i != 15; i++) {
+        /*for (int i = 0; i != 15; i++) {
             lista.setValueAt(i + 1, i, 0);
-        }
+        }*/
         
         System.out.println(lista.getRowCount() + " " + lista.getColumnCount());
         lista.setShowVerticalLines(true);
@@ -304,10 +304,10 @@ public class Vista {
     
     public void updateSongsStart(String[] info) {
         for (int x = 0; x < 15; x++) {
-            lista.setValueAt("", x, 1);
+            lista.setValueAt("", x, 0);
         }
         for (int x = 0; x < info.length; x++) {
-            lista.setValueAt(info[x], x, 1);
+            lista.setValueAt((x+1)+". "+info[x], x, 0);
         }
     }
     
