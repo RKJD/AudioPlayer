@@ -132,4 +132,8 @@
 			<nom>Chill</nom>
 			<ruta>listas/playlistChill.json</ruta>
 		</playlist>
+        <playlist id="4">
+			<nom>Rof</nom>
+			<ruta>listas/playlistRof.json</ruta>
+		</playlist>
 </data>
