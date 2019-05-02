@@ -14,6 +14,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import m06.uf1.p1.grup5.controlador.Controlador;
 import m06.uf1.p1.grup5.modelo.AudioList;
 import m06.uf1.p1.grup5.modelo.Cancion;
@@ -40,6 +42,7 @@ public class Vista {
     private JButton continuar;
     private JButton btnAnterior;
     private JButton btnSiguiente;
+    private JButton btnShuffle;
     
     private JTable lista;
     
@@ -96,6 +99,16 @@ public class Vista {
         parteIzquierda.setLayout(new GridLayout(0, 1));
         
         lista = new JTable(15, 2);
+        
+        lista.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent lse) {
+                
+                int y=0;
+                System.out.println(y+"hola");
+                y++;
+            }
+        });
         lista.setEnabled(true);
         //Controlador cont=new Controlador();
 
@@ -149,7 +162,9 @@ public class Vista {
         
         btnAnterior=new JButton("Anterior");
         btnSiguiente=new JButton("Siguiente");
+        btnShuffle=new JButton("Shuffle");
         auxAbajo.add(btnAnterior);
+        auxAbajo.add(btnShuffle);
         auxAbajo.add(btnSiguiente);
         
         parteAbajo.add(aux);
@@ -270,6 +285,14 @@ public class Vista {
     
     public void setSiguiente(JButton siguiente) {
         this.btnSiguiente = siguiente;
+    }
+    
+    public JButton getShuffle() {
+        return btnShuffle;
+    }
+    
+    public void setShuffle(JButton shuffle) {
+        this.btnShuffle = shuffle;
     }
 //</editor-fold>
 

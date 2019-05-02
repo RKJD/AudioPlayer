@@ -53,7 +53,7 @@ public class Controlador implements ActionListener {
         vista.getPlay().addActionListener(this);
         vista.getStop().addActionListener(this);
         vista.getPausa().addActionListener(this);
-        vista.getContinuar().addActionListener(this);
+        vista.getContinuar().addActionListener(this);       
         vista.getComboBox().addActionListener(this);
     }
 
