@@ -169,8 +169,7 @@ public class Vista {
         barra.setValue(0);
         scroll=new JScrollBar();
         scroll.setMinimum(minimum);
-        scroll.setMaximum(maximum);
-        
+        scroll.setMaximum(maximum);       
         scroll.setOrientation(0);
         play = new JButton("Play");
         stop = new JButton("Stop");
@@ -390,7 +389,7 @@ public class Vista {
         scroll.setValue(x);
     }
     public void updateDuradaActual(String x){
-        tiempo.setText(x);
+        tiempo.setText("");
     }
     
     public void updateDurada(String x){
