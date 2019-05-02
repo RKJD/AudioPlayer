@@ -39,8 +39,7 @@ public class Vista {
     private JPanel auxAbajo;
     private JPanel aux2Abajo;
     private JPanel aux3Abajo;
-    private JPanel aux4Abajo;
-
+    
     private JButton play;
     private JButton stop;
     private JButton pausa;
@@ -99,10 +98,10 @@ public class Vista {
         aux = new JPanel();
         aux.setLayout(new GridLayout(0, 4));
         aux2Abajo=new JPanel();
-        aux2Abajo.setLayout(new GridLayout(0,1));
-        aux4Abajo=new JPanel();
-        aux4Abajo.setLayout(new GridLayout(0,2));
+        aux2Abajo.setLayout(new GridLayout(0,2));
+        
         aux3Abajo=new JPanel();
+        //aux3Abajo.setLayout(new GridLayout(0,2));
         parteAbajo = new JPanel();
         parteAbajo.setLayout(new GridLayout(0, 1));
 
