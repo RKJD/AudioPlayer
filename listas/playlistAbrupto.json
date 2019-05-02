@@ -1,6 +1,6 @@
 {
     "nom":"Playlist Abrupto",
     "descripcio":"Esta playlist es la mas abrupta de las 3.",
-    "imatge":"images/abrupto.jpeg",
+    "imatge":"images/abrupto.jpg",
     "arxius":[1,2,3,8,12]
 }
