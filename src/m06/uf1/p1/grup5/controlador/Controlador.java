@@ -20,7 +20,7 @@ public class Controlador implements ActionListener {
     private Vista vista;
     private Audio audio;
     private XML memoria;
-    private boolean isPlaying;
+    private boolean isPlaying, isShuffle;
     private AudioList activeList, noList;
 
     public Controlador() {
@@ -54,6 +54,8 @@ public class Controlador implements ActionListener {
         vista.getStop().addActionListener(this);
         vista.getPausa().addActionListener(this);
         vista.getContinuar().addActionListener(this);
+        vista.getAnteriro().addActionListener(this);
+        vista.getSiguiente().addActionListener(this);
         vista.getComboBox().addActionListener(this);
     }
 
@@ -70,7 +72,6 @@ public class Controlador implements ActionListener {
             } else if (gestorEsdeveniments.equals(vista.getStop())) {
                 //Si hem pitjat el boto stop
                 audio.getPlayer().stop(); //parem la reproducció de l'àudio
-                audio = new Audio(getCancion(activeList.getNextTrack()).getRuta());
                 vista.updateSlider(4);
             } else if (gestorEsdeveniments.equals(vista.getPausa())) {
                 //Si hem pitjat el boto stop
@@ -80,6 +81,10 @@ public class Controlador implements ActionListener {
                 //Si hem pitjat el boto stop
                 audio.getPlayer().resume(); //continuem la reproducció de l'àudio
                 vista.updateSlider(16);
+            } else if (gestorEsdeveniments.equals(vista.getAnteriro())) {
+                audio = new Audio(getCancion(activeList.getPreviousTrack()).getRuta());
+            } else if (gestorEsdeveniments.equals(vista.getSiguiente())) {
+                audio = new Audio(getCancion(activeList.getNextTrack()).getRuta());
             } else if (gestorEsdeveniments.equals(vista.getComboBox())) {
                 //Si hem cambiat el comboBox
                 activeList = getPlaylistData(vista.getComboBox().getSelectedItem().toString());
@@ -111,6 +116,19 @@ public class Controlador implements ActionListener {
         } else {
             return LeerJson.getList(memoria.MapPlaylist.get(nombre).getRuta());
         }
+    }
+    
+    public boolean tryToNav(int i){
+        try {
+            audio.getPlayer().stop();
+            if(isShuffle){
+                 
+            } else{}
+            if (isPlaying) audio.getPlayer().play();
+        } catch (BasicPlayerException ex) {
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
     
     public void wipeSong(){
