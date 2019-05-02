@@ -68,6 +68,24 @@ public class Controlador implements ActionListener {
             @Override
             public void valueChanged(ListSelectionEvent lse) {
                 if (!lse.getValueIsAdjusting() && vista.getTable().getSelectedRow() != -1) {
+                    try {
+                        
+                        if (vista.getTable().getSelectedRow() < activeList.getTracks().length) {
+                            audio.getPlayer().stop();
+                            audio = new Audio(getCancion(activeList.getTrack(vista.getTable().getSelectedRow())).getRuta());
+                            vista.updateSongInfo(getCancion(activeList.getTrack()));
+                            if (isPlaying) {
+                                audio.getPlayer().play();
+                            }
+                        } else {
+                            System.out.println("Celda vacia");                            
+                            //audio = new Audio(getCancion(activeList.getTrack(vista.getTable().getSelectedRow())).getRuta());
+                        }
+
+                    } catch (BasicPlayerException ex) {
+                        Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
                     System.out.println(vista.getTable().getSelectedRow());
                 }
             }
@@ -84,6 +102,7 @@ public class Controlador implements ActionListener {
                 vista.updateSongInfo(getCancion(activeList.getTrack()));
                 isPlaying = true;
                 vista.updateSlider(2);
+                vista.updateDurada(getCancion(activeList.getTrack()).getDurada().toString());
             } else if (gestorEsdeveniments.equals(vista.getStop())) {
                 //Si hem pitjat el boto stop
                 audio.getPlayer().stop(); //parem la reproducció de l'àudio
@@ -138,23 +157,26 @@ public class Controlador implements ActionListener {
             return LeerJson.getList(memoria.MapPlaylist.get(nombre).getRuta());
         }
     }
-    
-    public boolean tryToNav(int i){
+
+    public boolean tryToNav(int i) {
         try {
             audio.getPlayer().stop();
-            if(isShuffle)
+            if (isShuffle) {
                 audio = new Audio(getCancion(activeList.getTrack(shuffleMode)).getRuta());
-            else
+            } else {
                 audio = new Audio(getCancion(i).getRuta());
+            }
             vista.updateSongInfo(getCancion(activeList.getTrack()));
-            if (isPlaying) audio.getPlayer().play();
+            if (isPlaying) {
+                audio.getPlayer().play();
+            }
         } catch (BasicPlayerException ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
-    
-    public void wipeSong(){
+
+    public void wipeSong() {
         try {
             vista.updateSongInfo(new Cancion(0, "", "", "", "", ""));
             audio.getPlayer().stop();
