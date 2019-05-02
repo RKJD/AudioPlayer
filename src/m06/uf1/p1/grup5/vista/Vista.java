@@ -2,16 +2,12 @@ package m06.uf1.p1.grup5.vista;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.BoundedRangeModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -21,10 +17,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JScrollBar;
-import javax.swing.JTabbedPane;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import m06.uf1.p1.grup5.controlador.Controlador;
 import m06.uf1.p1.grup5.modelo.AudioList;
 import m06.uf1.p1.grup5.modelo.Cancion;
 import m06.uf1.p1.grup5.modelo.Playlist;
@@ -367,7 +359,6 @@ public class Vista {
             erIcono = new ImageIcon(
                     a.getImage().toURI().toURL() //Imagen del album
             );
-            System.out.println("llego");
         } catch (FileNotFoundException e) {
             erIcono = pillarimagen("images/notFound.jpg");
         } catch (NoSuchFieldException e) {

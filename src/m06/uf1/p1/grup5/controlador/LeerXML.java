@@ -4,15 +4,12 @@ import m06.uf1.p1.grup5.modelo.Cancion;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.xml.parsers.*;
-import m06.uf1.p1.grup5.modelo.AudioList;
 import m06.uf1.p1.grup5.modelo.Playlist;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
-public class XML {
+public class LeerXML {
 
     private String archivo = "audios/canciones.xml";
     public Map<Integer, Cancion> MapCanciones = new HashMap();
