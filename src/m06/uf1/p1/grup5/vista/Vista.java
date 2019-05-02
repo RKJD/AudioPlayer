@@ -14,6 +14,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import m06.uf1.p1.grup5.controlador.Controlador;
 import m06.uf1.p1.grup5.modelo.AudioList;
 import m06.uf1.p1.grup5.modelo.Cancion;
@@ -40,6 +42,7 @@ public class Vista {
     private JButton continuar;
     private JButton btnAnterior;
     private JButton btnSiguiente;
+    private JButton btnShuffle;
     
     private JTable lista;
     
@@ -95,14 +98,24 @@ public class Vista {
         parteIzquierda = new JPanel();
         parteIzquierda.setLayout(new GridLayout(0, 1));
         
-        lista = new JTable(15, 2);
+        lista = new JTable(15, 1);
+        
+        lista.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent lse) {
+                
+                if (!lse.getValueIsAdjusting() && lista.getSelectedRow() != -1)
+                System.out.println("hola");
+                
+            }
+        });
         lista.setEnabled(true);
         //Controlador cont=new Controlador();
 
         //------------------
-        for (int i = 0; i != 15; i++) {
+        /*for (int i = 0; i != 15; i++) {
             lista.setValueAt(i + 1, i, 0);
-        }
+        }*/
         
         System.out.println(lista.getRowCount() + " " + lista.getColumnCount());
         lista.setShowVerticalLines(true);
@@ -149,7 +162,9 @@ public class Vista {
         
         btnAnterior=new JButton("Anterior");
         btnSiguiente=new JButton("Siguiente");
+        btnShuffle=new JButton("Shuffle");
         auxAbajo.add(btnAnterior);
+        auxAbajo.add(btnShuffle);
         auxAbajo.add(btnSiguiente);
         
         parteAbajo.add(aux);
@@ -271,6 +286,14 @@ public class Vista {
     public void setSiguiente(JButton siguiente) {
         this.btnSiguiente = siguiente;
     }
+    
+    public JButton getShuffle() {
+        return btnShuffle;
+    }
+    
+    public void setShuffle(JButton shuffle) {
+        this.btnShuffle = shuffle;
+    }
 //</editor-fold>
 
 //<editor-fold desc="Updates">
@@ -281,10 +304,10 @@ public class Vista {
     
     public void updateSongsStart(String[] info) {
         for (int x = 0; x < 15; x++) {
-            lista.setValueAt("", x, 1);
+            lista.setValueAt("", x, 0);
         }
         for (int x = 0; x < info.length; x++) {
-            lista.setValueAt(info[x], x, 1);
+            lista.setValueAt((x+1)+". "+info[x], x, 0);
         }
     }
     
