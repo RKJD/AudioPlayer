@@ -100,24 +100,24 @@ public class Controlador implements ActionListener {
                 audio.getPlayer().play(); //reproduim l'àudio
                 vista.updateSongInfo(getCancion(activeList.getTrack()));
                 isPlaying = true;
-                vista.updateScroll(2);                
+                vista.updateScroll(getCancion(activeList.getTrack()).getDurada().toString());                
                 vista.updateDurada(getCancion(activeList.getTrack()).getDurada().toString());
             } else if (gestorEsdeveniments.equals(vista.getStop())) {
                 //Si hem pitjat el boto stop
                 audio.getPlayer().stop(); //parem la reproducció de l'àudio
                 vista.updateDuradaActual("00:00");
                 isPlaying = false;
-                vista.updateScroll(4);
+                vista.updateScroll(getCancion(activeList.getTrack()).getDurada().toString());  
             } else if (gestorEsdeveniments.equals(vista.getPausa())) {
                 //Si hem pitjat el boto stop
                 audio.getPlayer().pause(); //pausem la reproducció de l'àudio
                 isPlaying = false;
-                vista.updateScroll(8);
+                vista.updateScroll(getCancion(activeList.getTrack()).getDurada().toString());  
             } else if (gestorEsdeveniments.equals(vista.getContinuar())) {
                 //Si hem pitjat el boto stop
                 audio.getPlayer().resume(); //continuem la reproducció de l'àudio
                 isPlaying = true;
-                vista.updateScroll(16);
+               vista.updateScroll(getCancion(activeList.getTrack()).getDurada().toString());  
             } else if (gestorEsdeveniments.equals(vista.getAnteriro())) {
                 tryToNav(activeList.getPreviousTrack());
             } else if (gestorEsdeveniments.equals(vista.getSiguiente())) {
