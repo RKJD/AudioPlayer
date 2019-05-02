@@ -76,21 +76,16 @@ public class XML {
                     Element canciones = (Element) node;
                     int id = Integer.parseInt(canciones.getAttribute("id"));
                     Element nom = (Element) canciones.getElementsByTagName("nom").item(0);
-                    Element ruta = GetRuta(canciones);
+                    Element ruta = (Element) canciones.getElementsByTagName("ruta").item(0);
                     
                     Playlist pl = new Playlist(id,
                             nom.getChildNodes().item(0).getNodeValue(),
                             ruta.getChildNodes().item(0).getNodeValue());
                     MapPlaylist.put(nom.getChildNodes().item(0).getNodeValue(), pl);
-                    System.out.println("llego");
                 }
             }
         } catch (SAXException ex) {
             ex.printStackTrace();
         }
-    }
-    private Element GetRuta(Element canciones){
-        Element ruta = (Element) canciones.getElementsByTagName("ruta").item(0);
-        return ruta;
     }
 }

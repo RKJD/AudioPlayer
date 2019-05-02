@@ -351,7 +351,6 @@ public class Vista {
         String[] nomPlaylist = new String[playlist.size()];
         int i = 0;
         for (Map.Entry<String, Playlist> p : playlist.entrySet()) {
-            System.out.println(p.getValue().getNom());
             nomPlaylist[i] = p.getValue().getNom();
             i++;
             elegir.addItem(p.getValue().getNom());

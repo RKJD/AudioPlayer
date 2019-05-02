@@ -38,7 +38,7 @@ public class LeerJson {
             AudioList retorno = new AudioList(
                     playlist.get("nom").toString(),
                     playlist.get("descripcio").toString(),
-                    playlist.get("imatge").toString(), tracks);
+                    getImage(playlist), tracks);
             return retorno;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -48,5 +48,13 @@ public class LeerJson {
             e.printStackTrace();
         }
         return null;
+    }
+    private static String getImage(JSONObject playlist){
+        try{
+            return playlist.get("imatge").toString();
+        } catch (NullPointerException e) {
+            return "nope";
+        }
+        
     }
 }
