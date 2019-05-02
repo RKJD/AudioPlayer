@@ -168,6 +168,9 @@ public class Vista {
         barra.setOrientation(0);
         barra.setValue(0);
         scroll=new JScrollBar();
+        scroll.setMinimum(minimum);
+        scroll.setMaximum(maximum);
+        
         scroll.setOrientation(0);
         play = new JButton("Play");
         stop = new JButton("Stop");
