@@ -14,6 +14,7 @@ import javax.swing.JTable;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JScrollBar;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -63,6 +64,7 @@ public class Vista {
     private JLabel nPlayList;
 
     private JSlider barra;
+    private JScrollBar scroll;
     private int minimum;
     private int maximum;
 
@@ -145,6 +147,8 @@ public class Vista {
         barra = new JSlider(minimum, maximum);
         barra.setOrientation(0);
         barra.setValue(0);
+        scroll=new JScrollBar();
+        scroll.setOrientation(0);
         play = new JButton("Play");
         stop = new JButton("Stop");
         pausa = new JButton("Pause");
@@ -162,7 +166,8 @@ public class Vista {
         auxAbajo.add(btnSiguiente);
 
         parteAbajo.add(aux);
-        parteAbajo.add(barra);
+        //parteAbajo.add(barra);
+        parteAbajo.add(scroll);
         parteAbajo.add(auxAbajo);
         parteAbajo.add(panell);
 
