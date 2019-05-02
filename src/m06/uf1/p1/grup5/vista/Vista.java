@@ -109,7 +109,7 @@ public class Vista {
         panellDerecha = new JPanel();
         panellDerecha.setLayout(new BorderLayout());
         auxDerecha = new JPanel();
-        auxDerecha.setLayout(new GridLayout(10, 0));
+        auxDerecha.setLayout(new GridLayout(5, 0));
         parteDerecha = new JPanel();
         parteDerecha.setLayout(new GridLayout(0, 1));
 
