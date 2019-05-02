@@ -131,7 +131,7 @@ public class Vista {
         ImageIcon erIcono = null;
         try{
         erIcono = new ImageIcon(
-                (new File("images/pixelchill.jpg")).toURI().toURL()
+                (new File("images/chill.jpg")).toURI().toURL()
         );
         } catch (Exception e){}
         
