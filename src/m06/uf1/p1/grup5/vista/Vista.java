@@ -255,6 +255,22 @@ public class Vista {
     public void setContinuar(JButton continuar) {
         this.continuar = continuar;
     }
+    
+    public JButton getAnteriro() {
+        return btnAnterior;
+    }
+    
+    public void setAnterior(JButton anterior) {
+        this.btnAnterior = anterior;
+    }
+    
+    public JButton getSiguiente() {
+        return btnSiguiente;
+    }
+    
+    public void setSiguiente(JButton siguiente) {
+        this.btnSiguiente = siguiente;
+    }
 //</editor-fold>
 
 //<editor-fold desc="Updates">
