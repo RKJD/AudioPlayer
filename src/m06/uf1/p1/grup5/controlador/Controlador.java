@@ -89,6 +89,7 @@ public class Controlador implements ActionListener {
                     nomCanciones[i] = getCancion(activeList.getTrack(i)).getNom();
                 }
                 vista.updateSongsStart(nomCanciones);
+                wipeSong();
                 audio = new Audio(getCancion(activeList.getNextTrack()).getRuta());
             }
         } catch (BasicPlayerException e) {
@@ -110,6 +111,14 @@ public class Controlador implements ActionListener {
         } else {
             return LeerJson.getList(memoria.MapPlaylist.get(nombre).getRuta());
         }
-
+    }
+    
+    public void wipeSong(){
+        try {
+            vista.updateSongInfo(new Cancion(0, "", "", "", "", ""));
+            audio.getPlayer().stop();
+        } catch (BasicPlayerException ex) {
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
