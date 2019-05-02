@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
 import java.util.Map;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -57,7 +58,7 @@ public class Vista {
     private JLabel autor;
     private JLabel nAutor;    
     private JLabel imagePlaylist;
-    private ImageIcon icono;
+    //private ImageIcon icono;
     
 
     private JLabel nombrePlayList;
@@ -116,19 +117,27 @@ public class Vista {
         
         /*icono = new javax.swing.ImageIcon(getClass().getResource("images/chill.jpg"));
         Image imagen = icono.getImage();
-        ImageIcon iconoEscalado = new ImageIcon(imagen.getScaledInstance(100, 100, Image.SCALE_SMOOTH));
-        imagePlaylist.setIcon(iconoEscalado);*/
-
+        ImageIcon iconoEscalado = new ImageIcon(imagen.getScaledInstance(100, 100, Image.SCALE_SMOOTH));*/
+        ImageIcon erIcono = null;
+        try{
+        erIcono = new ImageIcon(
+                (new File("images/pixelchill.jpg")).toURI().toURL()
+        );
+        } catch (Exception e){}
+        
+        imagePlaylist = new JLabel(erIcono);
         nPlayList = new JLabel("Nom de la playList:");
         nombrePlayList = new JLabel("Sin Playlist");
         nDescripcion = new JLabel("Descripcion:");
         descripcion = new JLabel("No tienes ninguna playlist seleccionada.");
 
         elegir = new JComboBox(new String[]{"Sin lista"});
+        
         auxDerecha.add(nPlayList);
         auxDerecha.add(nombrePlayList);
         auxDerecha.add(nDescripcion);
         auxDerecha.add(descripcion);
+        auxDerecha.add(imagePlaylist);
         //auxDerecha.add(imagePlaylist);                      
         panellDerecha.add(elegir, BorderLayout.NORTH);
         panellDerecha.add(auxDerecha, BorderLayout.SOUTH);
