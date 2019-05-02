@@ -6,7 +6,11 @@ import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.net.MalformedURLException;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -128,12 +132,7 @@ public class Vista {
         Image imagen = icono.getImage();
         ImageIcon iconoEscalado = new ImageIcon(imagen.getScaledInstance(100, 100, Image.SCALE_SMOOTH));*/
         ImageIcon erIcono = null;
-        try{
-        erIcono = new ImageIcon(
-                (new File("images/chill.jpg")).toURI().toURL()
-        );
-        } catch (Exception e){}
-        
+        erIcono = pillarimagen("images/null.jpg");
         imagePlaylist = new JLabel(erIcono);
         nPlayList = new JLabel("Nom de la playList:");
         nombrePlayList = new JLabel("Sin Playlist");
@@ -366,11 +365,18 @@ public class Vista {
         descripcion.setText(a.getDescription());
         ImageIcon erIcono = null;
         try{
-        erIcono = new ImageIcon(
-                (a.getImage()).toURI().toURL()
-        );
-        } catch (Exception e){}
-        
+            erIcono = new ImageIcon(
+                    a.getImage().toURI().toURL()    //Imagen del album
+            );
+        }catch (FileNotFoundException e){
+            erIcono = pillarimagen("images/notFound.jpg");
+        }catch (NoSuchFieldException e){
+            erIcono = pillarimagen("images/null.jpg");
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        System.out.println("Llego4");
+        imagePlaylist.setIcon(erIcono);
     }
 
     public void updateSlider(int x) {
@@ -399,6 +405,17 @@ public class Vista {
             lista.remove(0);
             vaciarLista();
         }
+    }
+    public ImageIcon pillarimagen(String ruta){
+        ImageIcon retorno = null;
+        try {
+            retorno = new ImageIcon(
+                    (new File(ruta)).toURI().toURL()
+            );
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return retorno;
     }
 
 }
