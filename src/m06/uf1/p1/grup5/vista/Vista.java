@@ -378,6 +378,13 @@ public class Vista {
         barra.setValue(x);
     }
     
+    public void updateScroll(int x){
+        scroll.setValue(x);
+    }
+    public void updateDuradaActual(String x){
+        tiempo.setText(x);
+    }
+    
     public void updateDurada(String x){
         tiempo2.setText(x);
     }
