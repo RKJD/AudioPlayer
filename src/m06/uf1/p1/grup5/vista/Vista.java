@@ -131,7 +131,7 @@ public class Vista {
         ImageIcon erIcono = null;
         try{
         erIcono = new ImageIcon(
-                (new File("images/pixelchill.jpg")).toURI().toURL()
+                (new File("images/chill.jpg")).toURI().toURL()
         );
         } catch (Exception e){}
         
@@ -143,11 +143,13 @@ public class Vista {
 
         elegir = new JComboBox(new String[]{"Sin lista"});
         
+        
         auxDerecha.add(nPlayList);
         auxDerecha.add(nombrePlayList);
         auxDerecha.add(nDescripcion);
         auxDerecha.add(descripcion);
         auxDerecha.add(imagePlaylist);
+        
         //auxDerecha.add(imagePlaylist);                      
         panellDerecha.add(elegir, BorderLayout.NORTH);
         panellDerecha.add(auxDerecha, BorderLayout.SOUTH);
