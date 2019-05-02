@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.parsers.ParserConfigurationException;
@@ -20,11 +21,14 @@ public class Controlador implements ActionListener {
     private Vista vista;
     private Audio audio;
     private XML memoria;
-    private boolean isPlaying;
+    private boolean isPlaying, isShuffle;
     private AudioList activeList, noList;
+    private Random shuffleMode;
 
     public Controlador() {
+        shuffleMode = new Random();
         isPlaying = false;
+        isShuffle = false;
         try {
             memoria = new XML();
             noList = new AudioList("Sin Playlist", "No tienes ninguna playlist seleccionada.", memoria.cargarCanciones());
@@ -53,7 +57,9 @@ public class Controlador implements ActionListener {
         vista.getPlay().addActionListener(this);
         vista.getStop().addActionListener(this);
         vista.getPausa().addActionListener(this);
-        vista.getContinuar().addActionListener(this);       
+        vista.getContinuar().addActionListener(this);
+        vista.getAnteriro().addActionListener(this);
+        vista.getSiguiente().addActionListener(this);
         vista.getComboBox().addActionListener(this);
     }
 
@@ -70,16 +76,22 @@ public class Controlador implements ActionListener {
             } else if (gestorEsdeveniments.equals(vista.getStop())) {
                 //Si hem pitjat el boto stop
                 audio.getPlayer().stop(); //parem la reproducció de l'àudio
-                audio = new Audio(getCancion(activeList.getNextTrack()).getRuta());
+                isPlaying = false;
                 vista.updateSlider(4);
             } else if (gestorEsdeveniments.equals(vista.getPausa())) {
                 //Si hem pitjat el boto stop
                 audio.getPlayer().pause(); //pausem la reproducció de l'àudio
+                isPlaying = false;
                 vista.updateSlider(8);
             } else if (gestorEsdeveniments.equals(vista.getContinuar())) {
                 //Si hem pitjat el boto stop
                 audio.getPlayer().resume(); //continuem la reproducció de l'àudio
+                isPlaying = true;
                 vista.updateSlider(16);
+            } else if (gestorEsdeveniments.equals(vista.getAnteriro())) {
+                tryToNav(activeList.getPreviousTrack());
+            } else if (gestorEsdeveniments.equals(vista.getSiguiente())) {
+                tryToNav(activeList.getNextTrack());
             } else if (gestorEsdeveniments.equals(vista.getComboBox())) {
                 //Si hem cambiat el comboBox
                 activeList = getPlaylistData(vista.getComboBox().getSelectedItem().toString());
@@ -111,6 +123,21 @@ public class Controlador implements ActionListener {
         } else {
             return LeerJson.getList(memoria.MapPlaylist.get(nombre).getRuta());
         }
+    }
+    
+    public boolean tryToNav(int i){
+        try {
+            audio.getPlayer().stop();
+            if(isShuffle)
+                audio = new Audio(getCancion(activeList.getTrack(shuffleMode)).getRuta());
+            else
+                audio = new Audio(getCancion(i).getRuta());
+            vista.updateSongInfo(getCancion(activeList.getTrack()));
+            if (isPlaying) audio.getPlayer().play();
+        } catch (BasicPlayerException ex) {
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
     
     public void wipeSong(){
