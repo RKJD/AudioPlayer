@@ -44,7 +44,7 @@ public class Vista {
     private JPanel auxAbajo;
     private JPanel aux2Abajo;
     private JPanel aux3Abajo;
-    
+
     private JButton play;
     private JButton stop;
     private JButton pausa;
@@ -62,13 +62,12 @@ public class Vista {
     private JLabel descripcion;
     private JLabel nDescripcion;
     private JLabel autor;
-    private JLabel nAutor;    
+    private JLabel nAutor;
     private JLabel imagePlaylist;
     //private ImageIcon icono;
     private JLabel tiempo;
     private JLabel tiempo1;
     private JLabel tiempo2;
-    
 
     private JLabel nombrePlayList;
     private JLabel nPlayList;
@@ -102,10 +101,10 @@ public class Vista {
 
         aux = new JPanel();
         aux.setLayout(new GridLayout(0, 4));
-        aux2Abajo=new JPanel();
-        aux2Abajo.setLayout(new GridLayout(0,2));
-        
-        aux3Abajo=new JPanel();
+        aux2Abajo = new JPanel();
+        aux2Abajo.setLayout(new GridLayout(0, 2));
+
+        aux3Abajo = new JPanel();
         //aux3Abajo.setLayout(new GridLayout(0,2));
         parteAbajo = new JPanel();
         parteAbajo.setLayout(new GridLayout(0, 1));
@@ -121,13 +120,12 @@ public class Vista {
         parteIzquierda.setLayout(new GridLayout(0, 1));
 
         lista = new JTable(15, 1);
-        
+
         lista.setEnabled(true);
         lista.setShowVerticalLines(true);
 
         parteIzquierda.add(lista);
 
-        
         /*icono = new javax.swing.ImageIcon(getClass().getResource("images/chill.jpg"));
         Image imagen = icono.getImage();
         ImageIcon iconoEscalado = new ImageIcon(imagen.getScaledInstance(100, 100, Image.SCALE_SMOOTH));*/
@@ -140,17 +138,15 @@ public class Vista {
         descripcion = new JLabel("No tienes ninguna playlist seleccionada.");
 
         elegir = new JComboBox(new String[]{"Sin lista"});
-        
+
         //auxDerecha.add(imagePlaylist); 
-        
         auxDerecha.add(nPlayList);
         auxDerecha.add(nombrePlayList);
         auxDerecha.add(nDescripcion);
         auxDerecha.add(descripcion);
-        
-                             
+
         panellDerecha.add(elegir, BorderLayout.NORTH);
-        panellDerecha.add(imagePlaylist,BorderLayout.CENTER);
+        panellDerecha.add(imagePlaylist, BorderLayout.CENTER);
         panellDerecha.add(auxDerecha, BorderLayout.SOUTH);
         parteDerecha.add(panellDerecha);
 
@@ -167,7 +163,7 @@ public class Vista {
         barra = new JSlider(minimum, maximum);
         barra.setOrientation(0);
         barra.setValue(0);
-        scroll=new JScrollBar();
+        scroll = new JScrollBar();
         scroll.setMinimum(minimum);
         scroll.setMaximum(maximum);       
         scroll.setOrientation(0);
@@ -183,20 +179,20 @@ public class Vista {
         btnAnterior = new JButton("Anterior");
         btnSiguiente = new JButton("Siguiente");
         btnShuffle = new JButton("in Bucle mode");
-        tiempo=new JLabel("00:00");
-        tiempo1=new JLabel("/");
-        tiempo2=new JLabel("00:00");
+        tiempo = new JLabel("00:00");
+        tiempo1 = new JLabel("/");
+        tiempo2 = new JLabel("00:00");
         auxAbajo.add(btnAnterior);
         auxAbajo.add(btnShuffle);
         auxAbajo.add(btnSiguiente);
-               
+
         parteAbajo.add(aux);
         //parteAbajo.add(barra);
         aux3Abajo.add(tiempo);
         aux3Abajo.add(tiempo1);
         aux3Abajo.add(tiempo2);
         aux2Abajo.add(scroll);
-        
+
         //aux4Abajo.add(aux2Abajo);
         aux2Abajo.add(aux3Abajo);
         parteAbajo.add(aux2Abajo);
@@ -325,13 +321,13 @@ public class Vista {
     public void setShuffle(JButton shuffle) {
         this.btnShuffle = shuffle;
     }
-    
-    public JLabel getImagen(){
+
+    public JLabel getImagen() {
         return imagePlaylist;
     }
-    
-    public void setImagen(JLabel imagen){
-        this.imagePlaylist=imagen;
+
+    public void setImagen(JLabel imagen) {
+        this.imagePlaylist = imagen;
     }
 //</editor-fold>
 
@@ -366,16 +362,16 @@ public class Vista {
         nombrePlayList.setText(a.getName());
         descripcion.setText(a.getDescription());
         ImageIcon erIcono = null;
-        try{
+        try {
             erIcono = new ImageIcon(
-                    a.getImage().toURI().toURL()    //Imagen del album
+                    a.getImage().toURI().toURL() //Imagen del album
             );
             System.out.println("llego");
-        }catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             erIcono = pillarimagen("images/notFound.jpg");
-        }catch (NoSuchFieldException e){
+        } catch (NoSuchFieldException e) {
             erIcono = pillarimagen("images/null.jpg");
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         imagePlaylist.setIcon(erIcono);
@@ -384,31 +380,42 @@ public class Vista {
     public void updateSlider(int x) {
         barra.setValue(x);
     }
-    
-    public void updateScroll(int x){
-        scroll.setValue(x);
+
+    public void updateScroll(String x) {
+        String segundos = x.substring(3, 5);
+        int sec = Integer.parseInt(segundos);
+        String minutos = x.substring(0, 2);
+        int min = Integer.parseInt(minutos);
+        min = min*60;
+        int value = sec + min;
+        scroll.setValue(value);
     }
-    public void updateDuradaActual(String x){
-        tiempo.setText("");
+
+    public void updateDuradaActual(String x) {
+        tiempo.setText(x);
     }
-    
-    public void updateDurada(String x){
+
+    public void updateDurada(String x) {
         tiempo2.setText(x);
     }
-    
-    public void updateShuffleText(boolean mode) {
-        if(mode) btnShuffle.setText("in Shuffle mode");
-        else  btnShuffle.setText("in Bucle mode");
-    }
-//</editor-fold>
 
+    public void updateShuffleText(boolean mode) {
+        if (mode) {
+            btnShuffle.setText("in Shuffle mode");
+        } else {
+            btnShuffle.setText("in Bucle mode");
+        }
+    }
+
+//</editor-fold>
     public void vaciarLista() {
         if (lista.getSize().height > 0) {
             lista.remove(0);
             vaciarLista();
         }
     }
-    public ImageIcon pillarimagen(String ruta){
+
+    public ImageIcon pillarimagen(String ruta) {
         ImageIcon retorno = null;
         try {
             retorno = new ImageIcon(
