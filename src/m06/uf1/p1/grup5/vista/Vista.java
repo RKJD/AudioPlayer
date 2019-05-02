@@ -122,7 +122,6 @@ public class Vista {
 
         lista = new JTable(15, 1);
         
-       
         lista.setEnabled(true);
         lista.setShowVerticalLines(true);
 
@@ -382,6 +381,13 @@ public class Vista {
 
     public void updateSlider(int x) {
         barra.setValue(x);
+    }
+    
+    public void updateScroll(int x){
+        scroll.setValue(x);
+    }
+    public void updateDuradaActual(String x){
+        tiempo.setText(x);
     }
     
     public void updateDurada(String x){
