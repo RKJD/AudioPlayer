@@ -52,7 +52,7 @@ public class Vista {
                     // CONTIENE
                         private JComboBox elegir;
                         private JLabel imagePlaylist;
-                        private JPanel auxDerecha;
+                        private JPanel contPlayList;
                         // CONTIENE
                             private JLabel nombrePlayList;
                             private JLabel nPlayList;
@@ -139,8 +139,8 @@ public class Vista {
                 erIcono = pillarimagen("images/null.jpg");
                 imagePlaylist = new JLabel(erIcono);
         
-                auxDerecha = new JPanel();
-                auxDerecha.setLayout(new GridLayout(5, 0));
+                contPlayList = new JPanel();
+                contPlayList.setLayout(new GridLayout(5, 0));
                     //
                     nPlayList = new JLabel("Nom de la playList:");
                     nombrePlayList = new JLabel("Sin Playlist");
@@ -225,15 +225,15 @@ public class Vista {
        
         parteIzquierda.add(lista);
 
-        //auxDerecha.add(imagePlaylist); 
-        auxDerecha.add(nPlayList);
-        auxDerecha.add(nombrePlayList);
-        auxDerecha.add(nDescripcion);
-        auxDerecha.add(descripcion);
+        //contPlayList.add(imagePlaylist); 
+        contPlayList.add(nPlayList);
+        contPlayList.add(nombrePlayList);
+        contPlayList.add(nDescripcion);
+        contPlayList.add(descripcion);
 
         panellDerecha.add(elegir, BorderLayout.NORTH);
         panellDerecha.add(imagePlaylist, BorderLayout.CENTER);
-        panellDerecha.add(auxDerecha, BorderLayout.SOUTH);
+        panellDerecha.add(contPlayList, BorderLayout.SOUTH);
         parteDerecha.add(panellDerecha);
         
         contNombreCancion.add(nCancion);
@@ -304,6 +304,15 @@ public class Vista {
         
         parteMedio.setBackground(Color.getHSBColor(0.25f, 0.3f, 0.8f));
         vacio.setBackground(Color.getHSBColor(0.25f, 0.3f, 0.8f));
+        panellDerecha.setBackground(Color.getHSBColor(0.25f, 0.2f, 0.9f));
+        contPlayList.setBackground(Color.getHSBColor(0.25f, 0.2f, 0.9f));
+        contNombreCancion.setBackground(Color.getHSBColor(0.16f,0.3f,0.9f));
+        contInfoRestante.setBackground(Color.getHSBColor(0.16f,0.25f,0.95f));
+        contTiempo.setBackground(Color.getHSBColor(0.16f,0.25f,0.95f));
+        contTiempoLetras.setBackground(Color.getHSBColor(0.16f,0.25f,0.95f));
+        contPFBotones.setBackground(Color.getHSBColor(0.16f,0.25f,0.95f));
+        contSFBotones.setBackground(Color.getHSBColor(0.16f,0.25f,0.95f));
+        
         finestra.setVisible(true);
     }
 //</editor-fold>
