@@ -79,7 +79,6 @@ public class Controlador implements ActionListener, BasicPlayerListener {
                         if (vista.getTable().getSelectedRow() < activeList.getTracks().length) {
                             audio.getPlayer().stop();
                             cambiaAudio(getCancion(activeList.getTrack(vista.getTable().getSelectedRow())));
-                            vista.updateDurada(getCancion(activeList.getTrack()).getDurada().toString());
                             vista.updateSongInfo(getCancion(activeList.getTrack()));
                             vista.updateScroll(getCancion(activeList.getTrack()).getDurada().toString());
                             if (isPlaying) {
@@ -106,32 +105,26 @@ public class Controlador implements ActionListener, BasicPlayerListener {
                 vista.updateSongInfo(getCancion(activeList.getTrack()));
                 isPlaying = true;
                 vista.updateScroll(getCancion(activeList.getTrack()).getDurada().toString());
-                vista.updateDurada(getCancion(activeList.getTrack()).getDurada().toString());
             } else if (gestorEsdeveniments.equals(vista.getStop())) {
                 //Si hem pitjat el boto stop
                 audio.getPlayer().stop(); //parem la reproducció de l'àudio
                 vista.updateDuradaActual(0);
                 isPlaying = false;
                 vista.updateScroll(getCancion(activeList.getTrack()).getDurada().toString());
-                vista.updateDurada(getCancion(activeList.getTrack()).getDurada().toString());
             } else if (gestorEsdeveniments.equals(vista.getPausa())) {
                 //Si hem pitjat el boto stop
                 audio.getPlayer().pause(); //pausem la reproducció de l'àudio                
                 isPlaying = false;
                 vista.updateScroll(getCancion(activeList.getTrack()).getDurada().toString());
-                vista.updateDurada(getCancion(activeList.getTrack()).getDurada().toString());
             } else if (gestorEsdeveniments.equals(vista.getContinuar())) {
                 //Si hem pitjat el boto stop
                 audio.getPlayer().resume(); //continuem la reproducció de l'àudio
                 isPlaying = true;
                 vista.updateScroll(getCancion(activeList.getTrack()).getDurada().toString());
-                vista.updateDurada(getCancion(activeList.getTrack()).getDurada().toString());
             } else if (gestorEsdeveniments.equals(vista.getAnteriro())) {
                 tryToNav(activeList.getPreviousTrack());
-                vista.updateDurada(getCancion(activeList.getTrack()).getDurada().toString());
             } else if (gestorEsdeveniments.equals(vista.getSiguiente())) {
                 tryToNav(activeList.getNextTrack());
-                vista.updateDurada(getCancion(activeList.getTrack()).getDurada().toString());
             } else if (gestorEsdeveniments.equals(vista.getShuffle())) {
                 isShuffle = !isShuffle;
                 vista.updateShuffleText(isShuffle);
@@ -222,7 +215,6 @@ public class Controlador implements ActionListener, BasicPlayerListener {
             case 8: //EOM (se ha acabado)
                 tryToNav(activeList.getNextTrack());
                 vista.updateScroll(getCancion(activeList.getTrack()).getDurada().toString());
-                vista.updateDurada(getCancion(activeList.getTrack()).getDurada().toString());
                 break;
             default:
         }
@@ -235,4 +227,5 @@ public class Controlador implements ActionListener, BasicPlayerListener {
         audio = new Audio(c.getRuta());
         audio.getPlayer().addBasicPlayerListener(this);
     }
+
 }
