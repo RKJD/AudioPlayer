@@ -27,6 +27,7 @@ import m06.uf1.p1.grup5.modelo.Playlist;
 
 public class Vista {
 
+//<editor-fold defaultstate="collapsed" desc="Variables">
     private JFrame finestra;
 
     //PANEL que contiene todo
@@ -110,9 +111,9 @@ public class Vista {
         //
         //
     //
-
+//</editor-fold>
     
-//<editor-fold desc="Constructor">
+//<editor-fold defaultstate="collapsed" desc="Constructor">
     public Vista() {
         finestra = new JFrame("Reproductor Àudio");
         finestra.setSize(600, 450);
@@ -445,7 +446,7 @@ public class Vista {
     }
 //</editor-fold>
 
-//<editor-fold desc="Updates">
+//<editor-fold  defaultstate="collapsed" desc="Updates">
     public void updateSongInfo(Cancion info) {
         this.nombreCancion.setText(info.getNom());
         this.autor.setText(info.getAutor());
@@ -530,6 +531,8 @@ public class Vista {
     }
 
 //</editor-fold>
+
+//<editor-fold  defaultstate="collapsed" desc="Funciones">
     public void vaciarLista() {
         if (lista.getSize().height > 0) {
             lista.remove(0);
@@ -548,5 +551,5 @@ public class Vista {
         }
         return retorno;
     }
-
+//</editor-fold>
 }
