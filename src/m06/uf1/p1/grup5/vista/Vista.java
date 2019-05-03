@@ -1,9 +1,11 @@
 package m06.uf1.p1.grup5.vista;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
@@ -26,21 +28,77 @@ import m06.uf1.p1.grup5.modelo.Playlist;
 public class Vista {
 
     private JFrame finestra;
-    private JPanel panell;
-    private JPanel panellDerecha;
-    private JPanel aux;
-    private JPanel parteDerecha;
-    private JPanel auxDerecha;
-    private JPanel parteIzquierda;
-    private JPanel parteAbajo;
-    private JPanel parteMedio;
-    private JPanel vacio;
-    private JPanel total;
-    private JPanel auxAbajo;
-    private JPanel aux2Abajo;
+
+    //PANEL que contiene todo
+    private JPanel total; // Contiene parteMedio y parteAbajo
+        // PANEL DEL MEDIO
+        private JPanel parteMedio; //Contiene el panel parteIzquierda, vacio y parteDerecha            
+            // PANELES IZQUIERDA
+            private JPanel parteIzquierda;
+                // CONTIENE       
+                    private JTable lista;
+                //
+
+            // PANEL MEDIO
+            private JPanel vacio;
+
+            // PANELES DERECHA
+            private JPanel parteDerecha;
+                // CONTIENE
+                    private JPanel panellDerecha;
+                    // CONTIENE
+                        private JComboBox elegir;
+                        private JLabel imagePlaylist;
+                        private JPanel auxDerecha;
+                        // CONTIENE
+                            private JLabel nombrePlayList;
+                            private JLabel nPlayList;
+                            private JLabel descripcion;
+                            private JLabel nDescripcion;
+                        //
+                    //
+                //
+                
+
+        //PANEL DE ABAJO
+        private JPanel parteAbajo;
+        // CONTIENE
+            private JPanel contInfoCancion;
+            // CONTIENE
+                private JPanel contNombreCancion;
+                // CONTIENE
+                    private JLabel nombreCancion;
+                    private JLabel nCancion;
+                //
+                private JPanel contInfoRestante;
+                // CONTIENE
+                    private JLabel autor;
+                    private JLabel nAutor;
+                    private JLabel nAlbum;
+                    private JLabel nombreAlbum;
+                //
+            //
+            private JPanel contTiempo;
+            // CONTIENE
+                private JSlider barra;// no se usa
+                private JScrollBar scroll;
+                    private int minimum;
+                    private int maximum;
+            //
+            private JPanel auxAbajo;
+            private JPanel panell;
+
+    
+    
+    
+
+    
+
+    
+    
     private JPanel aux3Abajo;
-    private JPanel aux1;
-    private JPanel aux2;
+    
+    
 
     private JButton play;
     private JButton stop;
@@ -50,64 +108,50 @@ public class Vista {
     private JButton btnSiguiente;
     private JButton btnShuffle;
 
-    private JTable lista;
+    
 
-    private JComboBox elegir;
+    
 
-    private JLabel nombreCancion;
-    private JLabel nCancion;
-    private JLabel descripcion;
-    private JLabel nDescripcion;
-    private JLabel autor;
-    private JLabel nAutor;
-    private JLabel imagePlaylist;
     //private ImageIcon icono;
     private JLabel tiempo;
     private JLabel tiempo1;
     private JLabel tiempo2;
-    private JLabel nAlbum;
-    private JLabel nombreAlbum;
+    
 
-    private JLabel nombrePlayList;
-    private JLabel nPlayList;
-
-    private JSlider barra;
-    private JScrollBar scroll;
-    private int minimum;
-    private int maximum;
+    
 
 //<editor-fold desc="Constructor">
     public Vista() {
 
         finestra = new JFrame("Reproductor Àudio");
-        finestra.setSize(500, 400);
+        finestra.setSize(600, 450);
         finestra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         finestra.setResizable(false);
         finestra.setLocationRelativeTo(null);
 
         vacio = new JPanel();
-        vacio.setLayout(new GridLayout());
+        //vacio.setLayout(new GridLayout());
         total = new JPanel();
         total.setLayout(new BorderLayout());
 
         parteMedio = new JPanel();
-        parteMedio.setLayout(new GridLayout(1, 2));
+        parteMedio.setLayout(new GridBagLayout());
+        GridBagConstraints x = new GridBagConstraints();
 
         panell = new JPanel();
         panell.setLayout(new GridLayout(1, 5));
         auxAbajo = new JPanel();
         auxAbajo.setLayout(new GridLayout(1, 2));
 
-        aux = new JPanel();
-        aux.setLayout(new GridLayout(0, 4));
-        aux1 = new JPanel();
-        aux1.setLayout(new GridLayout(0, 4));
-        aux2 = new JPanel();
-        aux2.setLayout(new GridLayout(2, 0));
-        aux2Abajo = new JPanel();
-        aux2Abajo.setLayout(new GridBagLayout());
+        contInfoRestante = new JPanel();
+        contInfoRestante.setLayout(new GridLayout(0, 4));
+        contNombreCancion = new JPanel();
+        contNombreCancion.setLayout(new GridLayout(0, 4));
+        contInfoCancion = new JPanel();
+        contInfoCancion.setLayout(new GridLayout(2, 0));
+        contTiempo = new JPanel();
+        contTiempo.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
-        
 
         aux3Abajo = new JPanel();
         //aux3Abajo.setLayout(new GridLayout(0,2));
@@ -131,9 +175,6 @@ public class Vista {
 
         parteIzquierda.add(lista);
 
-        /*icono = new javax.swing.ImageIcon(getClass().getResource("images/chill.jpg"));
-        Image imagen = icono.getImage();
-        ImageIcon iconoEscalado = new ImageIcon(imagen.getScaledInstance(100, 100, Image.SCALE_SMOOTH));*/
         ImageIcon erIcono = null;
         erIcono = pillarimagen("images/null.jpg");
         imagePlaylist = new JLabel(erIcono);
@@ -161,16 +202,15 @@ public class Vista {
         autor = new JLabel();
         nAlbum = new JLabel("Nom del album:");
         nombreAlbum = new JLabel();
-        aux1.add(nCancion);
-        aux1.add(nombreCancion);
-        aux.add(nAutor);
-        aux.add(autor);
-        aux.add(nAlbum);
-        aux.add(nombreAlbum);
-        aux2.add(aux1);
-        aux2.add(aux);
-        
-        
+        contNombreCancion.add(nCancion);
+        contNombreCancion.add(nombreCancion);
+        contInfoRestante.add(nAutor);
+        contInfoRestante.add(autor);
+        contInfoRestante.add(nAlbum);
+        contInfoRestante.add(nombreAlbum);
+        contInfoCancion.add(contNombreCancion);
+        contInfoCancion.add(contInfoRestante);
+
         minimum = 0;
         maximum = 16;
         barra = new JSlider(minimum, maximum);
@@ -178,8 +218,8 @@ public class Vista {
         barra.setValue(0);
         scroll = new JScrollBar();
         scroll.setMinimum(minimum);
-        scroll.setMaximum(maximum);       
-        scroll.setOrientation(0);        
+        scroll.setMaximum(maximum);
+        scroll.setOrientation(0);
         play = new JButton("Play");
         stop = new JButton("Stop");
         pausa = new JButton("Pause");
@@ -199,33 +239,49 @@ public class Vista {
         auxAbajo.add(btnShuffle);
         auxAbajo.add(btnSiguiente);
 
-        parteAbajo.add(aux2);
+        parteAbajo.add(contInfoCancion);
         //parteAbajo.add(barra);
         aux3Abajo.add(tiempo);
         aux3Abajo.add(tiempo1);
         aux3Abajo.add(tiempo2);
         c.fill = GridBagConstraints.HORIZONTAL;
-//c.ipady = 40;      //make this component tall
-c.weightx = 4;
-c.gridwidth = 2;
-c.gridx = 0;
-c.gridy = 0;
-        aux2Abajo.add(scroll,c);
+        c.weightx = 4;
+        c.gridwidth = 2;
+        c.gridx = 0;
+        c.gridy = 0;
+        contTiempo.add(scroll, c);
 
-        //aux4Abajo.add(aux2Abajo);
-         c.fill = GridBagConstraints.HORIZONTAL;
-//c.ipady = 40;      //make this component tall
-c.weightx = 0.5;
-
-c.gridx = 2;
-c.gridy = 0;
-        aux2Abajo.add(aux3Abajo,c);
-        parteAbajo.add(aux2Abajo);
+        //aux4Abajo.add(contTiempo);
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 0.5;
+        c.gridx = 2;
+        c.gridy = 0;
+        contTiempo.add(aux3Abajo, c);
+        parteAbajo.add(contTiempo);
         parteAbajo.add(auxAbajo);
         parteAbajo.add(panell);
 
-        parteMedio.add(parteIzquierda);
-        parteMedio.add(parteDerecha);
+        x.fill = GridBagConstraints.HORIZONTAL;
+        x.weightx = 0.5;
+        x.insets = new Insets(0, 5, 0, 0);
+        x.gridx = 0;
+        x.gridy = 0;
+        parteMedio.add(parteIzquierda, x);
+
+        x.fill = GridBagConstraints.HORIZONTAL;
+        x.weightx = 0;
+        //x.gridwidth = 0;
+        x.insets = new Insets(0, 0, 0, 0);
+        x.gridx = 1;
+        x.gridy = 0;
+        parteMedio.add(vacio, x);
+
+        x.fill = GridBagConstraints.HORIZONTAL;
+        x.weightx = 0.5;
+        x.insets = new Insets(0, 0, 0, 5);
+        x.gridx = 2;
+        x.gridy = 0;
+        parteMedio.add(parteDerecha, x);
 
         total.add(parteMedio, BorderLayout.CENTER);
         total.add(parteAbajo, BorderLayout.SOUTH);
@@ -266,7 +322,7 @@ c.gridy = 0;
     public void setNombreCancion(JLabel nombre) {
         this.nombreCancion = nombre;
     }
-    
+
     public JLabel getNombreAlbum() {
         return nombreAlbum;
     }
@@ -274,7 +330,7 @@ c.gridy = 0;
     public void setNombreALbum(JLabel nombre) {
         this.nombreAlbum = nombre;
     }
-    
+
     public JLabel getNAlbum() {
         return nAlbum;
     }
@@ -425,16 +481,20 @@ c.gridy = 0;
         int sec = Integer.parseInt(segundos);
         String minutos = x.substring(0, 2);
         int min = Integer.parseInt(minutos);
-        min = min*60;
+        min = min * 60;
         int value = sec + min;
         scroll.getModel().setExtent(1);
-        scroll.setMaximum(value+1);
+        scroll.setMaximum(value + 1);
     }
+
     public void updateDuradaActual(int x) {
-        int min = (int)(x/60);
-        int seg = x-(min*60);
-        if(seg<10) tiempo.setText(min+":0"+seg);
-        else tiempo.setText(min+":"+seg);
+        int min = (int) (x / 60);
+        int seg = x - (min * 60);
+        if (seg < 10) {
+            tiempo.setText(min + ":0" + seg);
+        } else {
+            tiempo.setText(min + ":" + seg);
+        }
         scroll.setValue(x);
     }
 
