@@ -19,12 +19,13 @@ import m06.uf1.p1.grup5.modelo.AudioList;
 import m06.uf1.p1.grup5.modelo.Cancion;
 import m06.uf1.p1.grup5.modelo.Playlist;
 import m06.uf1.p1.grup5.vista.Vista;
+import m06.uf1.p1.grup5.controlador.LectorXML;
 
 public class Controlador implements ActionListener, BasicPlayerListener {
 
     private Vista vista;
     private Audio audio;
-    private LeerXML memoria;
+    private LectorXML memoria;
     private boolean isPlaying, isShuffle;
     private AudioList activeList, noList;
     private Random shuffleMode;
@@ -36,7 +37,7 @@ public class Controlador implements ActionListener, BasicPlayerListener {
         isShuffle = false;
 
         try {
-            memoria = new LeerXML();
+            memoria = new LectorXML();
             noList = new AudioList("Sin Playlist", "No tienes ninguna playlist seleccionada.", memoria.cargarCanciones());
             memoria.cargarListas();
             vista = new Vista();
@@ -184,12 +185,14 @@ public class Controlador implements ActionListener, BasicPlayerListener {
         }
         return false;
     }
-
+    
+    /***
+     * Función que borra todos los datos de canción que se muestran en la vista
+     */
     public void wipeSong() {
         try {
             vista.updateSongInfo(new Cancion(0, "", "", "", "", ""));
             audio.getPlayer().stop();
-
         } catch (BasicPlayerException ex) {
             Logger.getLogger(Controlador.class
                     .getName()).log(Level.SEVERE, null, ex);
@@ -197,13 +200,12 @@ public class Controlador implements ActionListener, BasicPlayerListener {
     }
 
     @Override
-    public void opened(Object o, Map map) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public void opened(Object o, Map map) {}
+    @Override
+    public void setController(BasicController bc) {}
 
     @Override
     public void progress(int i, long l, byte[] bytes, Map map) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         vista.updateDuradaActual((int) (l / 1000000));
     }
 
@@ -227,10 +229,7 @@ public class Controlador implements ActionListener, BasicPlayerListener {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public void setController(BasicController bc) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
     public void cambiaAudio(Cancion c) {
         audio = new Audio(c.getRuta());

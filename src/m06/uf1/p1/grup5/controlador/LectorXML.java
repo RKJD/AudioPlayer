@@ -9,13 +9,13 @@ import m06.uf1.p1.grup5.modelo.Playlist;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
-public class LeerXML {
+public class LectorXML {
 
     private String archivo = "audios/canciones.xml";
     public Map<Integer, Cancion> MapCanciones = new HashMap();
     public Map<String, Playlist> MapPlaylist = new HashMap();
-    public LeerXML(){}
-    public static LeerXML errorRaro(){return new LeerXML();}
+    public LectorXML(){}
+    public static LectorXML errorRaro(){return new LectorXML();}
     
     public int[] cargarCanciones() throws FileNotFoundException, IOException, ParserConfigurationException {
 

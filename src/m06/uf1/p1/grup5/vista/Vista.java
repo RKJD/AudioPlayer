@@ -360,6 +360,7 @@ public class Vista {
     public void updateSongInfo(Cancion info) {
         this.nombreCancion.setText(info.getNom());
         this.autor.setText(info.getAutor());
+        this.nombreAlbum.setText(info.getAlbum());
     }
 
     public void updateSongsStart(String[] info) {
