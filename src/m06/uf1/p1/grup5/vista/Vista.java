@@ -300,6 +300,9 @@ public class Vista {
         total.add(parteMedio, BorderLayout.CENTER);
         total.add(parteAbajo, BorderLayout.SOUTH);
         finestra.add(total);
+        
+        parteMedio.setBackground(Color.getHSBColor(0.25f, 0.3f, 0.8f));
+        vacio.setBackground(Color.getHSBColor(0.25f, 0.3f, 0.8f));
         finestra.setVisible(true);
     }
 //</editor-fold>
