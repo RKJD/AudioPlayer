@@ -38,10 +38,12 @@ public class Vista {
                 // CONTIENE       
                     private JTable lista;
                 //
+            //
 
             // PANEL MEDIO
             private JPanel vacio;
-
+            //
+            
             // PANELES DERECHA
             private JPanel parteDerecha;
                 // CONTIENE
@@ -58,7 +60,8 @@ public class Vista {
                         //
                     //
                 //
-                
+            //
+        //        
 
         //PANEL DE ABAJO
         private JPanel parteAbajo;
@@ -104,6 +107,9 @@ public class Vista {
                 private JButton pausa;
                 private JButton continuar;
             //
+        //
+        //
+    //
 
     
 //<editor-fold desc="Constructor">
