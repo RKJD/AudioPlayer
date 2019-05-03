@@ -1,9 +1,5 @@
 package m06.uf1.p1.grup5.modelo;
 
-/**
- *
- * @author Marc
- */
 public class Playlist{
     private int id;
     private String nom,ruta;

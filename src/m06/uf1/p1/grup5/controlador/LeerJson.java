@@ -1,29 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package m06.uf1.p1.grup5.controlador;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import m06.uf1.p1.grup5.modelo.AudioList;
 import org.json.simple.*;
 import org.json.simple.parser.*;
-/**
- *
- * @author Marc
- */
+
 public class LeerJson {
-//    public static void main(String[] args){
-//        AudioList a = getList("listas/playlistAbrupto.json");
-//        for(int r : a.getTracks()){
-//            System.out.println(r);
-//        }
-//    }
+
     public static AudioList getList(String path) {
         JSONParser parser = new JSONParser();
         try {
@@ -38,7 +23,7 @@ public class LeerJson {
             AudioList retorno = new AudioList(
                     playlist.get("nom").toString(),
                     playlist.get("descripcio").toString(),
-                    playlist.get("imatge").toString(), tracks);
+                    getImage(playlist), tracks);
             return retorno;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -48,5 +33,13 @@ public class LeerJson {
             e.printStackTrace();
         }
         return null;
+    }
+    private static String getImage(JSONObject playlist){
+        try{
+            return playlist.get("imatge").toString();
+        } catch (NullPointerException e) {
+            return "nope";
+        }
+        
     }
 }

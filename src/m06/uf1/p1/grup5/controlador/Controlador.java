@@ -2,7 +2,6 @@ package m06.uf1.p1.grup5.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Random;
@@ -11,28 +10,34 @@ import java.util.logging.Logger;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.xml.parsers.ParserConfigurationException;
+import javazoom.jlgui.basicplayer.BasicController;
+import javazoom.jlgui.basicplayer.BasicPlayerEvent;
 import javazoom.jlgui.basicplayer.BasicPlayerException;
+import javazoom.jlgui.basicplayer.BasicPlayerListener;
 import m06.uf1.p1.grup5.modelo.Audio;
 import m06.uf1.p1.grup5.modelo.AudioList;
 import m06.uf1.p1.grup5.modelo.Cancion;
 import m06.uf1.p1.grup5.modelo.Playlist;
 import m06.uf1.p1.grup5.vista.Vista;
 
-public class Controlador implements ActionListener {
+public class Controlador implements ActionListener, BasicPlayerListener {
 
     private Vista vista;
     private Audio audio;
-    private XML memoria;
+    private LeerXML memoria;
     private boolean isPlaying, isShuffle;
     private AudioList activeList, noList;
     private Random shuffleMode;
+    private PlayingThread playingThread;
 
     public Controlador() {
+
         shuffleMode = new Random();
         isPlaying = false;
         isShuffle = false;
+
         try {
-            memoria = new XML();
+            memoria = new LeerXML();
             noList = new AudioList("Sin Playlist", "No tienes ninguna playlist seleccionada.", memoria.cargarCanciones());
             memoria.cargarListas();
             vista = new Vista();
@@ -48,6 +53,8 @@ public class Controlador implements ActionListener {
             vista.updateBox(getPlaylistMap());
             vista.updateSongsStart(nomCanciones);
             audio = new Audio(getCancion(activeList.getNextTrack()).getRuta());
+            audio.getPlayer().addBasicPlayerListener(this);
+
         } catch (IOException ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParserConfigurationException ex) {
@@ -56,6 +63,7 @@ public class Controlador implements ActionListener {
     }
 
     public void afegirListenerBotons() {
+
         vista.getPlay().addActionListener(this);
         vista.getStop().addActionListener(this);
         vista.getPausa().addActionListener(this);
@@ -64,6 +72,7 @@ public class Controlador implements ActionListener {
         vista.getSiguiente().addActionListener(this);
         vista.getShuffle().addActionListener(this);
         vista.getComboBox().addActionListener(this);
+
         vista.getTable().getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent lse) {
@@ -79,13 +88,11 @@ public class Controlador implements ActionListener {
                                 audio.getPlayer().play();
                             }
                         } else {
-                            System.out.println("Celda vacia");
                             //audio = new Audio(getCancion(activeList.getTrack(vista.getTable().getSelectedRow())).getRuta());
                         }
                     } catch (BasicPlayerException ex) {
                         Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    //System.out.println(vista.getTable().getSelectedRow());
                 }
             }
         });
@@ -102,10 +109,11 @@ public class Controlador implements ActionListener {
                 isPlaying = true;
                 vista.updateScroll(getCancion(activeList.getTrack()).getDurada().toString());
                 vista.updateDurada(getCancion(activeList.getTrack()).getDurada().toString());
+                playingThread.start();
             } else if (gestorEsdeveniments.equals(vista.getStop())) {
                 //Si hem pitjat el boto stop
                 audio.getPlayer().stop(); //parem la reproducció de l'àudio
-                vista.updateDuradaActual("00:00");
+                vista.updateDuradaActual(0);
                 isPlaying = false;
                 vista.updateScroll(getCancion(activeList.getTrack()).getDurada().toString());
             } else if (gestorEsdeveniments.equals(vista.getPausa())) {
@@ -185,5 +193,55 @@ public class Controlador implements ActionListener {
             Logger.getLogger(Controlador.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @Override
+    public void opened(Object o, Map map) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void progress(int i, long l, byte[] bytes, Map map) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        vista.updateDuradaActual((int) (l / 1000000));
+    }
+
+    @Override
+    public void stateUpdated(BasicPlayerEvent bpe) {
+        switch (bpe.getCode()) {
+            case 0: //OPENING
+            case 1: //OPENED
+            case 2: //PLAYING
+            case 3: //STOPPED
+            case 4: //PAUSED
+            case 5: //RESUMED
+                break;
+            case 8: //EOM (se ha acabado)
+                tryToNav(activeList.getNextTrack());
+                break;
+            default:
+        }
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setController(BasicController bc) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public class PlayingThread extends Thread {
+
+        public void run() {
+            try {
+                while (isPlaying) {
+                    Thread.sleep(1000);
+                }
+
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+
     }
 }

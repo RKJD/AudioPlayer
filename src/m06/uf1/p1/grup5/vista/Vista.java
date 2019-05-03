@@ -2,9 +2,6 @@ package m06.uf1.p1.grup5.vista;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
@@ -20,10 +17,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JScrollBar;
-import javax.swing.JTabbedPane;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import m06.uf1.p1.grup5.controlador.Controlador;
 import m06.uf1.p1.grup5.modelo.AudioList;
 import m06.uf1.p1.grup5.modelo.Cancion;
 import m06.uf1.p1.grup5.modelo.Playlist;
@@ -350,7 +343,6 @@ public class Vista {
         String[] nomPlaylist = new String[playlist.size()];
         int i = 0;
         for (Map.Entry<String, Playlist> p : playlist.entrySet()) {
-            System.out.println(p.getValue().getNom());
             nomPlaylist[i] = p.getValue().getNom();
             i++;
             elegir.addItem(p.getValue().getNom());
@@ -366,7 +358,6 @@ public class Vista {
             erIcono = new ImageIcon(
                     a.getImage().toURI().toURL() //Imagen del album
             );
-            System.out.println("llego");
         } catch (FileNotFoundException e) {
             erIcono = pillarimagen("images/notFound.jpg");
         } catch (NoSuchFieldException e) {
@@ -388,11 +379,15 @@ public class Vista {
         int min = Integer.parseInt(minutos);
         min = min*60;
         int value = sec + min;
-        scroll.setValue(value);
+        scroll.getModel().setExtent(1);
+        scroll.setMaximum(value+1);
     }
-
-    public void updateDuradaActual(String x) {
-        tiempo.setText(x);
+    public void updateDuradaActual(int x) {
+        int min = (int)(x/60);
+        int seg = x-(min*60);
+        if(seg<10) tiempo.setText(min+":0"+seg);
+        else tiempo.setText(min+":"+seg);
+        scroll.setValue(x);
     }
 
     public void updateDurada(String x) {
