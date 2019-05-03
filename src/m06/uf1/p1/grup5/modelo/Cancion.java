@@ -17,11 +17,17 @@ public class Cancion {
 //</editor-fold>
     
 //<editor-fold defaultstate="collapsed" desc="Getters">
+    /***@return Devuelve la id de la cancion*/
     public int getId(){ return id;}
+    /***@return Devuelve el nombre de la cancion*/
     public String getNom(){ return nom; }
+    /***@return Devuelve el autor de la cancion*/
     public String getAutor(){ return autor; }
+    /***@return Devuelve el album de la cancion*/
     public String getAlbum(){ return album; }
+    /***@return Devuelve la duracion de la cancion*/
     public String getDurada(){ return durada; }
+    /***@return Devuelve la ruta de la cancion*/
     public String getRuta() { return ruta; }
 //</editor-fold>
     

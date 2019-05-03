@@ -17,7 +17,12 @@ public class LectorXML {
     public LectorXML(){}
     public static LectorXML errorRaro(){return new LectorXML();}
     
-    public int[] cargarCanciones() throws FileNotFoundException, IOException, ParserConfigurationException {
+    /***
+     * Función que consulta en el XML para obtener una lista de canciones,
+     * esta puede ser consultada en formato de mapa con MapCanciones.
+     * @return Devuelve un listado de las IDs en formato de array
+     */
+    public int[] cargarCanciones() throws IOException, ParserConfigurationException {
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         Document document;
@@ -56,7 +61,11 @@ public class LectorXML {
         }
         return retorno;
     }
-
+    
+    /***
+     * Función que consulta en el XML para obtener una lista de playlist,
+     * esta puede ser consultada en formato de mapa con MapPlaylist.
+     */
     public void cargarListas() throws FileNotFoundException, IOException, ParserConfigurationException {
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();

@@ -9,6 +9,11 @@ import org.json.simple.parser.*;
 
 public class LeerJson {
 
+    /***
+     * Esta función consulta la inforamción de una lista de reproducción en los archivos Json
+     * @param path Dirección en la que se encuentra el Json
+     * @return Devuelve una lista de reproducción
+     */
     public static AudioList getList(String path) {
         JSONParser parser = new JSONParser();
         try {
