@@ -68,18 +68,18 @@ public class Controlador implements ActionListener {
             @Override
             public void valueChanged(ListSelectionEvent lse) {
                 if (!lse.getValueIsAdjusting() && vista.getTable().getSelectedRow() != -1) {
-                    try {                        
+                    try {
                         if (vista.getTable().getSelectedRow() < activeList.getTracks().length) {
                             audio.getPlayer().stop();
                             audio = new Audio(getCancion(activeList.getTrack(vista.getTable().getSelectedRow())).getRuta());
                             vista.updateDurada(getCancion(activeList.getTrack()).getDurada().toString());
                             vista.updateSongInfo(getCancion(activeList.getTrack()));
-                            vista.updateScroll(getCancion(activeList.getTrack()).getDurada().toString());   
+                            vista.updateScroll(getCancion(activeList.getTrack()).getDurada().toString());
                             if (isPlaying) {
                                 audio.getPlayer().play();
                             }
                         } else {
-                            System.out.println("Celda vacia");                            
+                            System.out.println("Celda vacia");
                             //audio = new Audio(getCancion(activeList.getTrack(vista.getTable().getSelectedRow())).getRuta());
                         }
                     } catch (BasicPlayerException ex) {
@@ -100,24 +100,24 @@ public class Controlador implements ActionListener {
                 audio.getPlayer().play(); //reproduim l'àudio
                 vista.updateSongInfo(getCancion(activeList.getTrack()));
                 isPlaying = true;
-                vista.updateScroll(getCancion(activeList.getTrack()).getDurada().toString());                
-                vista.updateDurada(getCancion(activeList.getTrack()).getDurada().toString());                
+                vista.updateScroll(getCancion(activeList.getTrack()).getDurada().toString());
+                vista.updateDurada(getCancion(activeList.getTrack()).getDurada().toString());
             } else if (gestorEsdeveniments.equals(vista.getStop())) {
                 //Si hem pitjat el boto stop
                 audio.getPlayer().stop(); //parem la reproducció de l'àudio
                 vista.updateDuradaActual("00:00");
                 isPlaying = false;
-                vista.updateScroll(getCancion(activeList.getTrack()).getDurada().toString());  
+                vista.updateScroll(getCancion(activeList.getTrack()).getDurada().toString());
             } else if (gestorEsdeveniments.equals(vista.getPausa())) {
                 //Si hem pitjat el boto stop
                 audio.getPlayer().pause(); //pausem la reproducció de l'àudio                
                 isPlaying = false;
-                vista.updateScroll(getCancion(activeList.getTrack()).getDurada().toString());  
+                vista.updateScroll(getCancion(activeList.getTrack()).getDurada().toString());
             } else if (gestorEsdeveniments.equals(vista.getContinuar())) {
                 //Si hem pitjat el boto stop
                 audio.getPlayer().resume(); //continuem la reproducció de l'àudio
                 isPlaying = true;
-               vista.updateScroll(getCancion(activeList.getTrack()).getDurada().toString());  
+                vista.updateScroll(getCancion(activeList.getTrack()).getDurada().toString());
             } else if (gestorEsdeveniments.equals(vista.getAnteriro())) {
                 tryToNav(activeList.getPreviousTrack());
             } else if (gestorEsdeveniments.equals(vista.getSiguiente())) {
@@ -133,7 +133,7 @@ public class Controlador implements ActionListener {
                 for (int i = 0; i < activeList.getTracks().length; i++) {
                     nomCanciones[i] = getCancion(activeList.getTrack(i)).getNom();
                 }
-                vista.updateSongsStart(nomCanciones);                
+                vista.updateSongsStart(nomCanciones);
                 wipeSong();
                 audio = new Audio(getCancion(activeList.getNextTrack()).getRuta());
             }
