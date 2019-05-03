@@ -14,6 +14,8 @@ public class LeerXML {
     private String archivo = "audios/canciones.xml";
     public Map<Integer, Cancion> MapCanciones = new HashMap();
     public Map<String, Playlist> MapPlaylist = new HashMap();
+    public LeerXML(){}
+    public static LeerXML errorRaro(){return new LeerXML();}
     
     public int[] cargarCanciones() throws FileNotFoundException, IOException, ParserConfigurationException {
 

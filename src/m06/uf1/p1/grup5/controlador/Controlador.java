@@ -28,7 +28,6 @@ public class Controlador implements ActionListener, BasicPlayerListener {
     private boolean isPlaying, isShuffle;
     private AudioList activeList, noList;
     private Random shuffleMode;
-    private PlayingThread playingThread;
 
     public Controlador() {
 
@@ -109,7 +108,6 @@ public class Controlador implements ActionListener, BasicPlayerListener {
                 isPlaying = true;
                 vista.updateScroll(getCancion(activeList.getTrack()).getDurada().toString());
                 vista.updateDurada(getCancion(activeList.getTrack()).getDurada().toString());
-                playingThread.start();
             } else if (gestorEsdeveniments.equals(vista.getStop())) {
                 //Si hem pitjat el boto stop
                 audio.getPlayer().stop(); //parem la reproducció de l'àudio
@@ -227,21 +225,5 @@ public class Controlador implements ActionListener, BasicPlayerListener {
     @Override
     public void setController(BasicController bc) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public class PlayingThread extends Thread {
-
-        public void run() {
-            try {
-                while (isPlaying) {
-                    Thread.sleep(1000);
-                }
-
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-        }
-
     }
 }
