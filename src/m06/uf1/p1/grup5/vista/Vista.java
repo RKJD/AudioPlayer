@@ -84,42 +84,28 @@ public class Vista {
                 private JScrollBar scroll;
                     private int minimum;
                     private int maximum;
+                private JPanel contTiempoLetras;
+                // CONTIENE
+                    private JLabel tiempoActual;
+                    private JLabel tiempoBarra;
+                    private JLabel tiempoTotalDuracion;
+                //
             //
-            private JPanel auxAbajo;
-            private JPanel panell;
+            private JPanel contPFBotones;
+            // CONTIENE
+                private JButton btnAnterior;
+                private JButton btnSiguiente;
+                private JButton btnShuffle;
+            //
+            private JPanel contSFBotones;
+            // CONTIENE
+                private JButton play;
+                private JButton stop;
+                private JButton pausa;
+                private JButton continuar;
+            //
 
     
-    
-    
-
-    
-
-    
-    
-    private JPanel aux3Abajo;
-    
-    
-
-    private JButton play;
-    private JButton stop;
-    private JButton pausa;
-    private JButton continuar;
-    private JButton btnAnterior;
-    private JButton btnSiguiente;
-    private JButton btnShuffle;
-
-    
-
-    
-
-    //private ImageIcon icono;
-    private JLabel tiempo;
-    private JLabel tiempo1;
-    private JLabel tiempo2;
-    
-
-    
-
 //<editor-fold desc="Constructor">
     public Vista() {
 
@@ -138,10 +124,10 @@ public class Vista {
         parteMedio.setLayout(new GridBagLayout());
         GridBagConstraints x = new GridBagConstraints();
 
-        panell = new JPanel();
-        panell.setLayout(new GridLayout(1, 5));
-        auxAbajo = new JPanel();
-        auxAbajo.setLayout(new GridLayout(1, 2));
+        contSFBotones = new JPanel();
+        contSFBotones.setLayout(new GridLayout(1, 5));
+        contPFBotones = new JPanel();
+        contPFBotones.setLayout(new GridLayout(1, 2));
 
         contInfoRestante = new JPanel();
         contInfoRestante.setLayout(new GridLayout(0, 4));
@@ -153,8 +139,8 @@ public class Vista {
         contTiempo.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
-        aux3Abajo = new JPanel();
-        //aux3Abajo.setLayout(new GridLayout(0,2));
+        contTiempoLetras = new JPanel();
+        //contTiempoLetras.setLayout(new GridLayout(0,2));
         parteAbajo = new JPanel();
         parteAbajo.setLayout(new GridLayout(0, 1));
 
@@ -224,26 +210,26 @@ public class Vista {
         stop = new JButton("Stop");
         pausa = new JButton("Pause");
         continuar = new JButton("Continue");
-        panell.add(play);
-        panell.add(pausa);
-        panell.add(continuar);
-        panell.add(stop);
+        contSFBotones.add(play);
+        contSFBotones.add(pausa);
+        contSFBotones.add(continuar);
+        contSFBotones.add(stop);
 
         btnAnterior = new JButton("Anterior");
         btnSiguiente = new JButton("Siguiente");
         btnShuffle = new JButton("in Bucle mode");
-        tiempo = new JLabel("00:00");
-        tiempo1 = new JLabel("/");
-        tiempo2 = new JLabel("00:00");
-        auxAbajo.add(btnAnterior);
-        auxAbajo.add(btnShuffle);
-        auxAbajo.add(btnSiguiente);
+        tiempoActual = new JLabel("00:00");
+        tiempoBarra = new JLabel("/");
+        tiempoTotalDuracion = new JLabel("00:00");
+        contPFBotones.add(btnAnterior);
+        contPFBotones.add(btnShuffle);
+        contPFBotones.add(btnSiguiente);
 
         parteAbajo.add(contInfoCancion);
         //parteAbajo.add(barra);
-        aux3Abajo.add(tiempo);
-        aux3Abajo.add(tiempo1);
-        aux3Abajo.add(tiempo2);
+        contTiempoLetras.add(tiempoActual);
+        contTiempoLetras.add(tiempoBarra);
+        contTiempoLetras.add(tiempoTotalDuracion);
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 4;
         c.gridwidth = 2;
@@ -256,10 +242,10 @@ public class Vista {
         c.weightx = 0.5;
         c.gridx = 2;
         c.gridy = 0;
-        contTiempo.add(aux3Abajo, c);
+        contTiempo.add(contTiempoLetras, c);
         parteAbajo.add(contTiempo);
-        parteAbajo.add(auxAbajo);
-        parteAbajo.add(panell);
+        parteAbajo.add(contPFBotones);
+        parteAbajo.add(contSFBotones);
 
         x.fill = GridBagConstraints.HORIZONTAL;
         x.weightx = 0.5;
@@ -356,11 +342,11 @@ public class Vista {
     }
 
     public JPanel getPanell() {
-        return panell;
+        return contSFBotones;
     }
 
-    public void setPanell(JPanel panell) {
-        this.panell = panell;
+    public void setPanell(JPanel contSFBotones) {
+        this.contSFBotones = contSFBotones;
     }
 
     public JButton getPlay() {
@@ -432,6 +418,7 @@ public class Vista {
     public void updateSongInfo(Cancion info) {
         this.nombreCancion.setText(info.getNom());
         this.autor.setText(info.getAutor());
+        this.nombreAlbum.setText(info.getAlbum());
     }
 
     public void updateSongsStart(String[] info) {
@@ -484,22 +471,23 @@ public class Vista {
         min = min * 60;
         int value = sec + min;
         scroll.getModel().setExtent(1);
-        scroll.setMaximum(value + 1);
+        scroll.setMaximum(value+1);
+        tiempoTotalDuracion.setText(x);
     }
 
     public void updateDuradaActual(int x) {
         int min = (int) (x / 60);
         int seg = x - (min * 60);
         if (seg < 10) {
-            tiempo.setText(min + ":0" + seg);
+            tiempoActual.setText(min + ":0" + seg);
         } else {
-            tiempo.setText(min + ":" + seg);
+            tiempoActual.setText(min + ":" + seg);
         }
         scroll.setValue(x);
     }
 
     public void updateDurada(String x) {
-        tiempo2.setText(x);
+        
     }
 
     public void updateShuffleText(boolean mode) {

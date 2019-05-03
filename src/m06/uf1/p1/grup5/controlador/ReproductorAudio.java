@@ -11,7 +11,7 @@ public class ReproductorAudio {
 
     public static void main(String[] args) throws FileNotFoundException {
         try {
-            LeerXML xml = new LeerXML();
+            LectorXML xml = new LectorXML();
             xml.cargarCanciones();
             Controlador controlador = new Controlador();
 
