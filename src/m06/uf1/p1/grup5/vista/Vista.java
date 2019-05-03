@@ -108,7 +108,6 @@ public class Vista {
     
 //<editor-fold desc="Constructor">
     public Vista() {
-
         finestra = new JFrame("Reproductor Àudio");
         finestra.setSize(600, 450);
         finestra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -126,8 +125,7 @@ public class Vista {
         parteDerecha.setLayout(new GridLayout(0, 1));        
             //
             panellDerecha = new JPanel();
-            panellDerecha.setLayout(new BorderLayout());
-        
+            panellDerecha.setLayout(new BorderLayout());        
                 //
                 elegir = new JComboBox(new String[]{"Sin lista"});
                 ImageIcon erIcono = null;
@@ -149,47 +147,76 @@ public class Vista {
         
         parteIzquierda = new JPanel();
         parteIzquierda.setLayout(new GridLayout(0, 1));
+            //
+            lista = new JTable(15, 1);
+            lista.setEnabled(true);
+            lista.setShowVerticalLines(true);
+            //
         
         
-        
-
-       
-
-        contSFBotones = new JPanel();
-        contSFBotones.setLayout(new GridLayout(1, 5));
-        contPFBotones = new JPanel();
-        contPFBotones.setLayout(new GridLayout(1, 2));
-
-        contInfoRestante = new JPanel();
-        contInfoRestante.setLayout(new GridLayout(0, 4));
-        contNombreCancion = new JPanel();
-        contNombreCancion.setLayout(new GridLayout(0, 4));
-        contInfoCancion = new JPanel();
-        contInfoCancion.setLayout(new GridLayout(2, 0));
-        contTiempo = new JPanel();
-        contTiempo.setLayout(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints();
-
-        contTiempoLetras = new JPanel();
-        //contTiempoLetras.setLayout(new GridLayout(0,2));
         parteAbajo = new JPanel();
         parteAbajo.setLayout(new GridLayout(0, 1));
-
-        
-        
-        
-
-        lista = new JTable(15, 1);
-
-        lista.setEnabled(true);
-        lista.setShowVerticalLines(true);
-
+        //    
+            contInfoCancion = new JPanel();
+            contInfoCancion.setLayout(new GridLayout(2, 0));
+                //
+                contNombreCancion = new JPanel();
+                contNombreCancion.setLayout(new GridLayout(0, 4));
+                    //
+                    nCancion = new JLabel("Nom de la canco:");
+                    nombreCancion = new JLabel();
+                    //
+            
+                contInfoRestante = new JPanel();
+                contInfoRestante.setLayout(new GridLayout(0, 4));
+                    //
+                    nAutor = new JLabel("Nom del autor:");
+                    autor = new JLabel();
+                    nAlbum = new JLabel("Nom del album:");
+                    nombreAlbum = new JLabel();
+                    //                    
+                //
+            
+            contTiempo = new JPanel();
+            contTiempo.setLayout(new GridBagLayout());
+            GridBagConstraints c = new GridBagConstraints();
+                //
+                minimum = 0;
+                maximum = 16;
+                barra = new JSlider(minimum, maximum);
+                barra.setOrientation(0);
+                barra.setValue(0);
+                scroll = new JScrollBar();
+                scroll.setMinimum(minimum);
+                scroll.setMaximum(maximum);
+                scroll.setOrientation(0);
+                contTiempoLetras = new JPanel();
+                    //
+                    tiempoActual = new JLabel("00:00");
+                    tiempoBarra = new JLabel("/");
+                    tiempoTotalDuracion = new JLabel("00:00");
+                    //
+                //
+            
+            contPFBotones = new JPanel();
+            contPFBotones.setLayout(new GridLayout(1, 2));
+                //
+                btnAnterior = new JButton("Anterior");
+                btnSiguiente = new JButton("Siguiente");
+                btnShuffle = new JButton("in Bucle mode");
+                //
+                
+            contSFBotones = new JPanel();
+            contSFBotones.setLayout(new GridLayout(1, 5));
+                //
+                play = new JButton("Play");
+                stop = new JButton("Stop");
+                pausa = new JButton("Pause");
+                continuar = new JButton("Continue");
+                //
+        //
+       
         parteIzquierda.add(lista);
-
-        
-        
-
-        
 
         //auxDerecha.add(imagePlaylist); 
         auxDerecha.add(nPlayList);
@@ -201,13 +228,7 @@ public class Vista {
         panellDerecha.add(imagePlaylist, BorderLayout.CENTER);
         panellDerecha.add(auxDerecha, BorderLayout.SOUTH);
         parteDerecha.add(panellDerecha);
-
-        nCancion = new JLabel("Nom de la canco:");
-        nombreCancion = new JLabel();
-        nAutor = new JLabel("Nom del autor:");
-        autor = new JLabel();
-        nAlbum = new JLabel("Nom del album:");
-        nombreAlbum = new JLabel();
+        
         contNombreCancion.add(nCancion);
         contNombreCancion.add(nombreCancion);
         contInfoRestante.add(nAutor);
@@ -216,31 +237,12 @@ public class Vista {
         contInfoRestante.add(nombreAlbum);
         contInfoCancion.add(contNombreCancion);
         contInfoCancion.add(contInfoRestante);
-
-        minimum = 0;
-        maximum = 16;
-        barra = new JSlider(minimum, maximum);
-        barra.setOrientation(0);
-        barra.setValue(0);
-        scroll = new JScrollBar();
-        scroll.setMinimum(minimum);
-        scroll.setMaximum(maximum);
-        scroll.setOrientation(0);
-        play = new JButton("Play");
-        stop = new JButton("Stop");
-        pausa = new JButton("Pause");
-        continuar = new JButton("Continue");
+        
         contSFBotones.add(play);
         contSFBotones.add(pausa);
         contSFBotones.add(continuar);
         contSFBotones.add(stop);
-
-        btnAnterior = new JButton("Anterior");
-        btnSiguiente = new JButton("Siguiente");
-        btnShuffle = new JButton("in Bucle mode");
-        tiempoActual = new JLabel("00:00");
-        tiempoBarra = new JLabel("/");
-        tiempoTotalDuracion = new JLabel("00:00");
+        
         contPFBotones.add(btnAnterior);
         contPFBotones.add(btnShuffle);
         contPFBotones.add(btnSiguiente);
@@ -250,14 +252,14 @@ public class Vista {
         contTiempoLetras.add(tiempoActual);
         contTiempoLetras.add(tiempoBarra);
         contTiempoLetras.add(tiempoTotalDuracion);
+        
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 4;
         c.gridwidth = 2;
         c.gridx = 0;
         c.gridy = 0;
         contTiempo.add(scroll, c);
-
-        //aux4Abajo.add(contTiempo);
+        
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 0.5;
         c.gridx = 2;
