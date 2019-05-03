@@ -115,14 +115,45 @@ public class Vista {
         finestra.setResizable(false);
         finestra.setLocationRelativeTo(null);
 
-        vacio = new JPanel();
-        //vacio.setLayout(new GridLayout());
         total = new JPanel();
         total.setLayout(new BorderLayout());
-
+        
         parteMedio = new JPanel();
         parteMedio.setLayout(new GridBagLayout());
         GridBagConstraints x = new GridBagConstraints();
+        
+        parteDerecha = new JPanel();
+        parteDerecha.setLayout(new GridLayout(0, 1));        
+            //
+            panellDerecha = new JPanel();
+            panellDerecha.setLayout(new BorderLayout());
+        
+                //
+                elegir = new JComboBox(new String[]{"Sin lista"});
+                ImageIcon erIcono = null;
+                erIcono = pillarimagen("images/null.jpg");
+                imagePlaylist = new JLabel(erIcono);
+        
+                auxDerecha = new JPanel();
+                auxDerecha.setLayout(new GridLayout(5, 0));
+                    //
+                    nPlayList = new JLabel("Nom de la playList:");
+                    nombrePlayList = new JLabel("Sin Playlist");
+                    nDescripcion = new JLabel("Descripcion:");
+                    descripcion = new JLabel("No tienes ninguna playlist seleccionada.");
+                    //        
+                //
+            //
+        
+        vacio = new JPanel();
+        
+        parteIzquierda = new JPanel();
+        parteIzquierda.setLayout(new GridLayout(0, 1));
+        
+        
+        
+
+       
 
         contSFBotones = new JPanel();
         contSFBotones.setLayout(new GridLayout(1, 5));
@@ -144,15 +175,9 @@ public class Vista {
         parteAbajo = new JPanel();
         parteAbajo.setLayout(new GridLayout(0, 1));
 
-        panellDerecha = new JPanel();
-        panellDerecha.setLayout(new BorderLayout());
-        auxDerecha = new JPanel();
-        auxDerecha.setLayout(new GridLayout(5, 0));
-        parteDerecha = new JPanel();
-        parteDerecha.setLayout(new GridLayout(0, 1));
-
-        parteIzquierda = new JPanel();
-        parteIzquierda.setLayout(new GridLayout(0, 1));
+        
+        
+        
 
         lista = new JTable(15, 1);
 
@@ -161,15 +186,10 @@ public class Vista {
 
         parteIzquierda.add(lista);
 
-        ImageIcon erIcono = null;
-        erIcono = pillarimagen("images/null.jpg");
-        imagePlaylist = new JLabel(erIcono);
-        nPlayList = new JLabel("Nom de la playList:");
-        nombrePlayList = new JLabel("Sin Playlist");
-        nDescripcion = new JLabel("Descripcion:");
-        descripcion = new JLabel("No tienes ninguna playlist seleccionada.");
+        
+        
 
-        elegir = new JComboBox(new String[]{"Sin lista"});
+        
 
         //auxDerecha.add(imagePlaylist); 
         auxDerecha.add(nPlayList);
