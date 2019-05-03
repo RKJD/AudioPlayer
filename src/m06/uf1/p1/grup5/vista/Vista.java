@@ -37,6 +37,8 @@ public class Vista {
     private JPanel auxAbajo;
     private JPanel aux2Abajo;
     private JPanel aux3Abajo;
+    private JPanel aux1;
+    private JPanel aux2;
 
     private JButton play;
     private JButton stop;
@@ -61,6 +63,8 @@ public class Vista {
     private JLabel tiempo;
     private JLabel tiempo1;
     private JLabel tiempo2;
+    private JLabel nAlbum;
+    private JLabel nombreAlbum;
 
     private JLabel nombrePlayList;
     private JLabel nPlayList;
@@ -94,6 +98,10 @@ public class Vista {
 
         aux = new JPanel();
         aux.setLayout(new GridLayout(0, 4));
+        aux1 = new JPanel();
+        aux1.setLayout(new GridLayout(0, 4));
+        aux2 = new JPanel();
+        aux2.setLayout(new GridLayout(2, 0));
         aux2Abajo = new JPanel();
         aux2Abajo.setLayout(new GridLayout(0, 2));
 
@@ -147,10 +155,18 @@ public class Vista {
         nombreCancion = new JLabel();
         nAutor = new JLabel("Nom del autor:");
         autor = new JLabel();
-        aux.add(nCancion);
-        aux.add(nombreCancion);
+        nAlbum = new JLabel("Nom del album:");
+        nombreAlbum = new JLabel();
+        aux1.add(nCancion);
+        aux1.add(nombreCancion);
         aux.add(nAutor);
         aux.add(autor);
+        aux.add(nAlbum);
+        aux.add(nombreAlbum);
+        aux2.add(aux1);
+        aux2.add(aux);
+        
+        
         minimum = 0;
         maximum = 16;
         barra = new JSlider(minimum, maximum);
@@ -179,7 +195,7 @@ public class Vista {
         auxAbajo.add(btnShuffle);
         auxAbajo.add(btnSiguiente);
 
-        parteAbajo.add(aux);
+        parteAbajo.add(aux2);
         //parteAbajo.add(barra);
         aux3Abajo.add(tiempo);
         aux3Abajo.add(tiempo1);
@@ -233,6 +249,22 @@ public class Vista {
 
     public void setNombreCancion(JLabel nombre) {
         this.nombreCancion = nombre;
+    }
+    
+    public JLabel getNombreAlbum() {
+        return nombreAlbum;
+    }
+
+    public void setNombreALbum(JLabel nombre) {
+        this.nombreAlbum = nombre;
+    }
+    
+    public JLabel getNAlbum() {
+        return nAlbum;
+    }
+
+    public void setNAlbum(JLabel nombre) {
+        this.nAlbum = nombre;
     }
 
     public JLabel getNombrePlayList() {
