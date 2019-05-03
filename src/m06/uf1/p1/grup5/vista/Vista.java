@@ -413,6 +413,7 @@ public class Vista {
         int value = sec + min;
         scroll.getModel().setExtent(1);
         scroll.setMaximum(value+1);
+        tiempo2.setText(x);
     }
     public void updateDuradaActual(int x) {
         int min = (int)(x/60);
@@ -423,7 +424,7 @@ public class Vista {
     }
 
     public void updateDurada(String x) {
-        tiempo2.setText(x);
+        
     }
 
     public void updateShuffleText(boolean mode) {
