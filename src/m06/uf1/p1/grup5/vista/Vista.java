@@ -1,6 +1,8 @@
 package m06.uf1.p1.grup5.vista;
 
 import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -103,7 +105,9 @@ public class Vista {
         aux2 = new JPanel();
         aux2.setLayout(new GridLayout(2, 0));
         aux2Abajo = new JPanel();
-        aux2Abajo.setLayout(new GridLayout(0, 2));
+        aux2Abajo.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        
 
         aux3Abajo = new JPanel();
         //aux3Abajo.setLayout(new GridLayout(0,2));
@@ -175,7 +179,7 @@ public class Vista {
         scroll = new JScrollBar();
         scroll.setMinimum(minimum);
         scroll.setMaximum(maximum);       
-        scroll.setOrientation(0);
+        scroll.setOrientation(0);        
         play = new JButton("Play");
         stop = new JButton("Stop");
         pausa = new JButton("Pause");
@@ -200,10 +204,22 @@ public class Vista {
         aux3Abajo.add(tiempo);
         aux3Abajo.add(tiempo1);
         aux3Abajo.add(tiempo2);
-        aux2Abajo.add(scroll);
+        c.fill = GridBagConstraints.HORIZONTAL;
+//c.ipady = 40;      //make this component tall
+c.weightx = 4;
+c.gridwidth = 2;
+c.gridx = 0;
+c.gridy = 0;
+        aux2Abajo.add(scroll,c);
 
         //aux4Abajo.add(aux2Abajo);
-        aux2Abajo.add(aux3Abajo);
+         c.fill = GridBagConstraints.HORIZONTAL;
+//c.ipady = 40;      //make this component tall
+c.weightx = 0.5;
+
+c.gridx = 2;
+c.gridy = 0;
+        aux2Abajo.add(aux3Abajo,c);
         parteAbajo.add(aux2Abajo);
         parteAbajo.add(auxAbajo);
         parteAbajo.add(panell);
